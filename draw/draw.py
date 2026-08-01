@@ -14,6 +14,8 @@ def paint_image(image):
         image[:] = [255, 0, 0]  # BGR format for blue
     else:
         print("Invalid color choice. Please choose red, green, or blue.")
+        print("Returning the original image without any changes.")
+        return image
 
     return image
 
