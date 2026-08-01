@@ -26,7 +26,7 @@ def changeRes(width, height, capture): # Function to change the resolution of th
 def main():
 
     choice = 0
-    choice = input("What method of resizing a video do you want to use?\n (1) Rescale the video by a scale factor using the helper function rescaleFrame() .\n (2) Changing the resolution of them using the built in function capture.set method.")
+    choice = input("What method of resizing a video do you want to use?\n (1) Rescale the video by a scale factor using the helper function rescaleFrame() .\n (2) Changing the resolution of them using the built in function capture.set method.\n")
 
     if choice == "1":
 
