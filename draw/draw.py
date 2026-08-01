@@ -83,7 +83,7 @@ def main():
 
     blank = np.zeros((500, 500, 3), dtype='uint8') # Giving in the width, height, and number of color channels (3 for RGB) and dtype = uint8 for 8-bit unsigned integers (0-255)
 
-    choice = input("What do you want to do with the image?\n(1) Paint all the image.\n(2) Paint a protion of the image.\n(3) Draw a rectangle.\n(4) Draw a circle.\n")
+    choice = input("What do you want to do with the image?\n(1) Paint all the image.\n(2) Paint a protion of the image.\n(3) Draw a rectangle.\n(4) Draw a circle.\n(5) Draw a line.\n")
 
     if choice == "1":
         painted_image = paint_image(blank)
@@ -207,6 +207,37 @@ def main():
 
         draw_circle(blank, center, radius, color, thickness)
         cv.imshow("Drawn Circle on Image", blank)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
+
+    elif choice == "5":
+        start_point = eval(input("Please enter the starting point of the line in the format (x, y): "))
+        end_point = eval(input("Please enter the ending point of the line in the format (x, y): "))
+
+        if not (isinstance(start_point, tuple) and isinstance(end_point, tuple)) or len(start_point) != 2 or len(end_point) != 2:
+            print("Invalid point format. Please enter the points as tuples (x, y).")
+            return
+
+        if start_point[0] < 0 or start_point[0] > 499 or start_point[1] < 0 or start_point[1] > 499:
+            print("Invalid starting point. Please ensure both coordinates are between 0 and 499.")
+            return
+
+        if end_point[0] < 0 or end_point[0] > 499 or end_point[1] < 0 or end_point[1] > 499:
+            print("Invalid ending point. Please ensure both coordinates are between 0 and 499.")
+            return
+
+        color = input("What color do you want the line to be? (red, green, blue):\n ")
+        if color not in ["red", "green", "blue"]:
+            print("Invalid color choice. Initiating with default color red.")
+            color = "red"
+
+        thickness = int(input("Enter the thickness of the line (positive integer): "))
+        if thickness <= 0:
+            print("Invalid thickness. Please enter a positive integer for the thickness.")
+            return
+
+        draw_line(blank, start_point, end_point, color, thickness)
+        cv.imshow("Drawn a Line on Image", blank)
         cv.waitKey(0)
         cv.destroyAllWindows()
 
