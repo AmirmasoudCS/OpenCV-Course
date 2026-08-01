@@ -16,9 +16,8 @@ def rescaleFrame(frame, scale=0.75): # Function to rescale the frame by a given 
 
     return cv.resize(frame, dimensions, interpolation=cv.INTER_AREA) # Resizing the frame using the new dimensions and returning it
 
-capture = cv.VideoCapture("Videos/vid1.mp4") # Creating a VideoCapture object to read the video file
 
-def changeRes(width, height): # Function to change the resolution of the video
+def changeRes(width, height, capture): # Function to change the resolution of the video
     # Live Video
 
     capture.set(3, width) # Setting the width of the video
@@ -31,6 +30,8 @@ def main():
 
     if choice == "1":
         while True: # Infinite loop to read and display frames from the video
+
+            capture = cv.VideoCapture("Videos/vid1.mp4") # Creating a VideoCapture object to read the video file
 
             isTrue, frame = capture.read() # Reading a frame from the video
 
@@ -47,7 +48,7 @@ def main():
 
     elif choice == "2":
         capture = cv.VideoCapture(0) # Creating a VideoCapture object to read from the webcam
-        capture_resized = changeRes(640, 480) # Changing the resolution of the video to 640x480
+        capture_resized = changeRes(640, 480, capture) # Changing the resolution of the video to 640x480
 
         cv.imshow("Video", frame) # Displaying the resized video
         cv.imshow("Resized Video", capture_resized) # Displaying the resized video
