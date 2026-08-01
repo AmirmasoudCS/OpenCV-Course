@@ -11,6 +11,7 @@ def main():
         
         grey_image = to_grey(image)
 
+        cv.imshow("Original Image", image)
         cv.imshow("Grey Image", grey_image)
         cv.waitKey(0)
         cv.destroyAllWindows()
