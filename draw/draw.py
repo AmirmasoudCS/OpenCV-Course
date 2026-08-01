@@ -144,6 +144,9 @@ def main():
             thickness = -1
 
         draw_rectangle(blank, start_x, finish_x,  start_y, finish_y, color, thickness)
+        cv.imshow("Drawn Rectangle on Image", blank)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
 
 
 if __name__ == "__main__":
