@@ -3,10 +3,6 @@
 
 import cv2 as cv
 
-img = cv.imread("Photos/img1.jpg")
-cv.imshow("Image", img)
-cv.waitKey(0)
-
 def rescaleFrame(frame, scale=0.75): # Function to rescale the frame by a given scale factor
 
     width = frame.shape[1] * scale # frame.shape[1] gives the width of the frame, and we multiply it by the scale factor to get the new width
@@ -19,4 +15,10 @@ def rescaleFrame(frame, scale=0.75): # Function to rescale the frame by a given 
 
     return cv.resize(frame, dimensions, interpolation=cv.INTER_AREA) # Resizing the frame using the new dimensions and returning it
 
+
+img = cv.imread("Photos/img1.jpg")
 img_resized = rescaleFrame(img, scale=0.5) # Rescaling the image by a scale factor of 0.5
+
+cv.imshow("Image", img)
+cv.imshow("Resized Image", img_resized) # Displaying the original and rescaled images
+cv.waitKey(0)
