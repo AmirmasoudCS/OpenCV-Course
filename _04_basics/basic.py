@@ -64,7 +64,7 @@ def main():
         iterations = int(input("Please enter the number of iterations: "))
 
         canny_image = find_edge(image)
-        dilated_image = dilate(image, kernel_size, iterations)
+        dilated_image = dilate(canny_image, kernel_size, iterations)
 
         cv.imshow("Original Image", image)
         cv.imshow("Dilated Image", dilated_image)
