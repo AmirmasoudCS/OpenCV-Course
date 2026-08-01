@@ -29,11 +29,20 @@ def main():
     choice = input("What method of resizing a video do you want to use?\n (1) Rescale the video by a scale factor using the helper function rescaleFrame() .\n (2) Changing the resolution of them using the built in function capture.set method.")
 
     if choice == "1":
+
         capture = cv.VideoCapture("Videos/vid1.mp4") # Creating a VideoCapture object to read the video file
+
+        if not capture.isOpened(): # Checking if the video file was opened successfully
+            print("Error: Could not open video file.")
+            return
         
         while True: # Infinite loop to read and display frames from the video
             
             isTrue, frame = capture.read() # Reading a frame from the video
+
+            if not isTrue or frame is None: # Checking if the frame was read successfully
+                print("Error: Failed to grab a frame from the video.")
+                break
 
             resized_frame = rescaleFrame(frame, scale=0.5) # Rescaling the frame by a scale factor of 0.5, take note that rescaling a video by 0.5, reduces the size of it to 0.5 * 0.5 = 0.25, which is a quarter of the original size, if you want to reduce it to half, you should scale = math.sqrt(0.5) instead so sqrt(0.5) * sqrt(0.5) = 0.5, which is half of the original size.
 
