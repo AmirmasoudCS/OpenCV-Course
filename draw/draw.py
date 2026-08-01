@@ -21,7 +21,7 @@ def paint_image(image):
 
 def main():
 
-    blank = np.zeros((500, 500, 3), dtype='uint8')
+    blank = np.zeros((500, 500, 3), dtype='uint8') # Giving in the width, height, and number of color channels (3 for RGB)
 
     choice = input("What do you want to do with the image?\n (1) Paint the image.\n")
 
