@@ -8,10 +8,13 @@ def paint_image(image):
 
     if choice == "red":
         image[:] = [0, 0, 255]  # BGR format for red
+
     elif choice == "green":
         image[:] = [0, 255, 0]  # BGR format for green
+
     elif choice == "blue":
         image[:] = [255, 0, 0]  # BGR format for blue
+
     else:
         print("Invalid color choice. Please choose red, green, or blue.")
         print("Returning the original image without any changes.")
@@ -25,10 +28,13 @@ def paint_portion(image, start_x, finish_x, start_y, finish_y):
 
     if choice == "red":
         image[start_y:finish_y, start_x:finish_x] = [0, 0, 255]  # BGR format for red
+
     elif choice == "green":
         image[start_y:finish_y, start_x:finish_x] = [0, 255, 0]  # BGR format for green
+
     elif choice == "blue":
         image[start_y:finish_y, start_x:finish_x] = [255, 0, 0]  # BGR format for blue
+
     else:
         print("Invalid color choice. Please choose red, green, or blue.")
         print("Returning the original image without any changes.")
@@ -38,13 +44,28 @@ def paint_portion(image, start_x, finish_x, start_y, finish_y):
 
 # 3. Draw a rectangle on the image
 def draw_rectangle(image, start_x, finish_x, start_y, finish_y, color="red", thickness=-1): # You can also fill the image by cv.FILELD
+
     if color == "red":
         cv.rectangle(image, (start_x, start_y), (finish_x, finish_y), (0, 0, 255), thickness)
+
     elif color == "green":
         cv.rectangle(image, (start_x, start_y), (finish_x, finish_y), (0, 255, 0), thickness)
+
     elif color == "blue":
         cv.rectangle(image, (start_x, start_y), (finish_x, finish_y), (255, 0, 0), thickness)
 
+
+# 4. Draw a circle on the image
+def draw_circle(image, center, radius, color="red", thickness=-1):
+
+    if color == "red":
+        cv.circle(image, center, radius, (0, 0, 255), thickness)
+
+    elif color == "green":
+        cv.circle(image, center, radius, (0, 255, 0), thickness)
+
+    elif color == "blue":
+        cv.circle(image, center, radius, (255, 0, 0), thickness)
 
 def main():
 
