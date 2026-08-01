@@ -4,13 +4,13 @@ from _04_basics.blur import blur
 from _04_basics.edge_cascade import find_edge
 from _04_basics.dilating import dilate
 from _04_basics.eroding import erode
-
+from _04_basics.resize import resize
 
 def main():
 
     image = cv.imread("assets/Photos/eiffel_tower_2.jpg")
 
-    choice = input("What do  you want to do?\n(1) Convert to grey scale\n(2) Blur the image.\n(3) Find the edges of an image.\n(4) Blur and find the edges of an image.\n(5) Dilate an image.\n(6) Eroding an image.\n")
+    choice = input("What do  you want to do?\n(1) Convert to grey scale\n(2) Blur the image.\n(3) Find the edges of an image.\n(4) Blur and find the edges of an image.\n(5) Dilate an image.\n(6) Eroding an image.\n(7) Resize an image.\n")
 
     if choice == "1":
         
@@ -86,6 +86,17 @@ def main():
         cv.imshow("Canny Image", canny_image)
         cv.imshow("Dilated Image", dilated_image)
         cv.imshow("Eroded Image", eroded_image)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
+
+    elif choice == "7":
+
+        new_size = eval(input("Please enter the new sizes of the image (ignoring aspect ration) in the format of (x, y): "))
+
+        resized_image = resize(image, new_size)
+
+        cv.imshow("original Image", image)
+        cv.imshow("Resized Image", resized_image)
         cv.waitKey(0)
         cv.destroyAllWindows()
         
