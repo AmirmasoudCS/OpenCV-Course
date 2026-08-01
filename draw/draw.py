@@ -71,7 +71,7 @@ def main():
 
     blank = np.zeros((500, 500, 3), dtype='uint8') # Giving in the width, height, and number of color channels (3 for RGB) and dtype = uint8 for 8-bit unsigned integers (0-255)
 
-    choice = input("What do you want to do with the image?\n(1) Paint all the image.\n(2) Paint a protion of the image.\n(3) Draw a rectangle.\n")
+    choice = input("What do you want to do with the image?\n(1) Paint all the image.\n(2) Paint a protion of the image.\n(3) Draw a rectangle.\n(4) Draw a circle.\n")
 
     if choice == "1":
         painted_image = paint_image(blank)
@@ -171,6 +171,32 @@ def main():
         cv.waitKey(0)
         cv.destroyAllWindows()
 
+    if choice == "4":
+
+        center = eval(input("Please enter the center of the circle in the format (x, y): "))
+        if not isinstance(center, tuple) or len(center) != 2:
+            print("Invalid center format. Please enter the center as a tuple (x, y).")
+            return
+        
+        radius = int(input("Please enter the radius of the circle: "))
+        if radius <= 0:
+            print("Invalid radius. Please enter a positive integer for the radius.")
+            return
+
+        color = input("What color do you want the circle to be? (red, green, blue):\n ")
+        if color not in ["red", "green", "blue"]:
+            print("Invalid color choice. Initiating with default color red.")
+            color = "red"
+
+        thickness = int(input("Enter the thickness of the circle border (positive integer, or -1 for filled): "))
+        if thickness < -1:
+            print("Invalid thickness. Initiating with default thickness -1 (filled).")
+            thickness = -1
+
+        draw_circle(blank, center, radius, color, thickness)
+        cv.imshow("Drawn Circle on Image", blank)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
 
 if __name__ == "__main__":
     main()
