@@ -21,7 +21,7 @@ while True: # Infinite loop to read and display frames from the video
 
     isTrue, frame = capture.read() # Reading a frame from the video
 
-    resized_frame = rescaleFrame(frame, scale=0.5) # Rescaling the frame by a scale factor of 0.5
+    resized_frame = rescaleFrame(frame, scale=0.5) # Rescaling the frame by a scale factor of 0.5, take note that rescaling a video by 0.5, reduces the size of it to 0.5 * 0.5 = 0.25, which is a quarter of the original size, if you want to reduce it to half, you should scale = math.sqrt(0.5) instead so sqrt(0.5) * sqrt(0.5) = 0.5, which is half of the original size.
 
     cv.imshow("Video", frame) # Displaying the original frame
     cv.imshow("Resized Video", resized_frame) # Displaying the rescaled frame
