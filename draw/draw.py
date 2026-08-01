@@ -35,8 +35,13 @@ def paint_portion(image, start_x, finish_x, start_y, finish_y):
 
     return image
 
-def draw_rectangle(image, start_x, finish_x, start_y, finish_y):
-    cv.rectangle(image, (start_x, start_y), (finish_x, finish_y))
+def draw_rectangle(image, start_x, finish_x, start_y, finish_y, color="red", thickness=-1):
+    if color == "red":
+        cv.rectangle(image, (start_x, start_y), (finish_x, finish_y), (0, 0, 255), thickness)
+    elif color == "green":
+        cv.rectangle(image, (start_x, start_y), (finish_x, finish_y), (0, 255, 0), thickness)
+    elif color == "blue":
+        cv.rectangle(image, (start_x, start_y), (finish_x, finish_y), (255, 0, 0), thickness)
 
 
 def main():
@@ -128,7 +133,17 @@ def main():
                 continue
             break
 
-        draw_rectangle(blank, start_x, finish_x,  start_y, finish_y)
+        color = input("What color do you want the rectangle to be? (red, green, blue):\n ")
+        if color not in ["red", "green", "blue"]:
+            print("Invalid color choice. Initiating with default color red.")
+            color = "red"
+
+        thickness = int(input("Enter the thickness of the rectangle border (positive integer, or -1 for filled): "))
+        if thickness < -1:
+            print("Invalid thickness. Initiating with default thickness -1 (filled).")
+            thickness = -1
+
+        draw_rectangle(blank, start_x, finish_x,  start_y, finish_y, color, thickness)
 
 
 if __name__ == "__main__":
