@@ -3,7 +3,7 @@ from _04_basics.grey_scale import to_grey
 
 def main():
 
-    image = cv.imread("assets/Photos/image4.jpg")
+    image = cv.imread("assets/Photos/img4.jpg")
 
     choice = "What do  you want to do?\n(1) Convert to grey scale\n"
 
