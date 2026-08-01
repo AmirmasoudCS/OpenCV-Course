@@ -5,12 +5,14 @@ from _04_basics.edge_cascade import find_edge
 from _04_basics.dilating import dilate
 from _04_basics.eroding import erode
 from _04_basics.resize import resize
+from _04_basics.cropping import crop
+
 
 def main():
 
     image = cv.imread("assets/Photos/eiffel_tower_2.jpg")
 
-    choice = input("What do  you want to do?\n(1) Convert to grey scale\n(2) Blur the image.\n(3) Find the edges of an image.\n(4) Blur and find the edges of an image.\n(5) Dilate an image.\n(6) Eroding an image.\n(7) Resize an image.\n")
+    choice = input("What do  you want to do?\n(1) Convert to grey scale\n(2) Blur the image.\n(3) Find the edges of an image.\n(4) Blur and find the edges of an image.\n(5) Dilate an image.\n(6) Eroding an image.\n(7) Resize an image.\n(8) Crop an image.\n")
 
     if choice == "1":
         
@@ -97,6 +99,20 @@ def main():
 
         cv.imshow("original Image", image)
         cv.imshow("Resized Image", resized_image)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
+
+    elif choice == "8":
+
+        start_x = input("Please enter the starting point of image on X axis: ")
+        finish_x = input("Please enter the finishing point of image on X axis: ")
+        start_y = input("Please enter the starting point of image on Y axis: ")
+        finish_y = input("Please enter the finishing point of image on Y axis: ")
+
+        cropped_image = crop(image, start_y, finish_y, start_x, finish_x)
+
+        cv.imshow("Original Image", image)
+        cv.imshow("Cropped Image", cropped_image)
         cv.waitKey(0)
         cv.destroyAllWindows()
         
