@@ -252,7 +252,7 @@ def main():
     else:
         print("Invalid choice. Please select a valid option from the menu.")
 
-    
+    clear_screen()
 
 if __name__ == "__main__":
     main()
