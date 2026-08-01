@@ -47,11 +47,15 @@ def main():
         cv.destroyAllWindows() # Closing all OpenCV windows
 
     elif choice == "2":
+
         capture = cv.VideoCapture(0) # Creating a VideoCapture object to read from the webcam
         capture_resized = changeRes(640, 480, capture) # Changing the resolution of the video to 640x480
 
+        isTrue, frame = capture.read() # Reading a frame from the video
+        isTrueResized, frame_resized = capture_resized.read() # Reading a frame from the resized video
+
         cv.imshow("Video", frame) # Displaying the resized video
-        cv.imshow("Resized Video", capture_resized) # Displaying the resized video
+        cv.imshow("Resized Video", frame_resized) # Displaying the resized video
 
 if __name__ == "__main__":
     main() # Calling the main function to run the program
