@@ -2,11 +2,14 @@ import cv2 as cv
 from _04_basics.grey_scale import to_grey
 from _04_basics.blur import blur
 from _04_basics.edge_cascade import find_edge
+from _04_basics.dilating import dilate
+
+
 def main():
 
     image = cv.imread("assets/Photos/img4.jpg")
 
-    choice = input("What do  you want to do?\n(1) Convert to grey scale\n(2) Blur the image.\n(3) Find the edges of an image.\n(4) Blur and find the edges of an image.\n")
+    choice = input("What do  you want to do?\n(1) Convert to grey scale\n(2) Blur the image.\n(3) Find the edges of an image.\n(4) Blur and find the edges of an image.\n(5) Dilate an image.\n")
 
     if choice == "1":
         
@@ -52,6 +55,19 @@ def main():
         cv.imshow("Blurred Image", blured_image)
         cv.imshow("Edges in teh Original Image", canny_image)
         cv.imshow("Edges in the Blured Image", canny_blurred_image)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
+
+    elif choice == "5":
+
+        kernel_size: tuple[int, int] = eval(input("Please enter the kernel size in the (x, y) format: "))
+        iterations = int(input("Please enter the number of iterations: "))
+
+        canny_image = find_edge(image)
+        dilated_image = dilate(image, kernel_size, iterations)
+
+        cv.imshow("Original Image", image)
+        cv.imshow("Dilated Image", dilated_image)
         cv.waitKey(0)
         cv.destroyAllWindows()
 
