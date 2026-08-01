@@ -79,7 +79,7 @@ def main():
 
         canny_image = find_edge(image)
         dilated_image = dilate(canny_image, kernel_size, iterations)
-        eroded_image = erode(image, kernel_size, iterations)
+        eroded_image = erode(dilated_image, kernel_size, iterations)
 
         cv.imshow("Original Image", image)
         cv.imshow("Eroded Image", eroded_image)
