@@ -91,7 +91,7 @@ def main():
 
     blank = np.zeros((500, 500, 3), dtype='uint8') # Giving in the width, height, and number of color channels (3 for RGB) and dtype = uint8 for 8-bit unsigned integers (0-255)
 
-    choice = input("What do you want to do with the image?\n(1) Paint all the image.\n(2) Paint a protion of the image.\n(3) Draw a rectangle.\n(4) Draw a circle.\n(5) Draw a line.\n")
+    choice = input("What do you want to do with the image?\n(1) Paint all the image.\n(2) Paint a protion of the image.\n(3) Draw a rectangle.\n(4) Draw a circle.\n(5) Draw a line.\n(6) Put a text on the image.\n")
 
     if choice == "1":
         painted_image = paint_image(blank)
@@ -252,6 +252,34 @@ def main():
         cv.imshow("Drawn a Line on Image", blank)
         cv.waitKey(0)
         cv.destroyAllWindows()
+
+    elif choice == "6":
+        text = input("Please enter the text you want to put on the image:")
+        if not text:
+            print("No text entered. Please enter some text to put on the image.")
+            return
+
+        position = eval(input("Please enter the position of the text in the format (x, y): "))
+        if position[0] < 0 or position[0] > 499 or position[1] < 0 or position[1] > 499:
+            print("Invalid position. Please ensure both coordinates are between 0 and 499.")
+            return
+
+        font_scale = float(input("Please enter the font scale (e.g., 1.0 for normal size): "))
+        if font_scale <= 0:
+            print("Invalid font scale. Please enter a positive value for the font scale.")
+            return
+
+        color = input("What color do you want the text to be? (red, green, blue):\n ")
+        if color not in ["red", "green", "blue"]:
+            print("Invalid color choice. Initiating with default color red.")
+            color = "red"
+
+        thickness = int(input("Enter the thickness of the text (positive integer): "))
+        if thickness <= 0:
+            print("Invalid thickness. Please enter a positive integer for the thickness.")
+            return
+
+        write_text(blank, text, position, font_scale=font_scale, color=(0, 0, 255) if color == "red" else (0, 255, 0) if color == "green" else (255, 0, 0), thickness=thickness)
 
     else:
         print("Invalid choice. Please select a valid option from the menu.")
