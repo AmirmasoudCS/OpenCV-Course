@@ -280,6 +280,9 @@ def main():
             return
 
         write_text(blank, text, position, font_scale=font_scale, color=(0, 0, 255) if color == "red" else (0, 255, 0) if color == "green" else (255, 0, 0), thickness=thickness)
+        cv.imshow("Image with Text", blank)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
 
     else:
         print("Invalid choice. Please select a valid option from the menu.")
