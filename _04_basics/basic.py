@@ -68,6 +68,7 @@ def main():
         dilated_image = dilate(canny_image, kernel_size, iterations)
 
         cv.imshow("Original Image", image)
+        cv.imshow("Canny Image", canny_image)
         cv.imshow("Dilated Image", dilated_image)
         cv.waitKey(0)
         cv.destroyAllWindows()
@@ -82,6 +83,8 @@ def main():
         eroded_image = erode(dilated_image, kernel_size, iterations)
 
         cv.imshow("Original Image", image)
+        cv.imshow("Canny Image", canny_image)
+        cv.imshow("Dilated Image", dilated_image)
         cv.imshow("Eroded Image", eroded_image)
         cv.waitKey(0)
         cv.destroyAllWindows()
