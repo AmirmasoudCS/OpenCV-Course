@@ -51,3 +51,6 @@ def main():
 
         cv.imshow("Video", frame) # Displaying the resized video
         cv.imshow("Resized Video", capture_resized) # Displaying the resized video
+
+if __name__ == "__main__":
+    main() # Calling the main function to run the program
