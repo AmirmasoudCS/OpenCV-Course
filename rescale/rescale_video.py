@@ -52,12 +52,19 @@ def main():
         capture_resized = cv.VideoCapture(0) # Creating another VideoCapture object for the resized video
         changeRes(640, 480, capture) # Changing the resolution of the video to 640x480
 
-        isTrue, frame = capture.read() # Reading a frame from the video
-        isTrueResized, frame_resized = capture_resized.read() # Reading a frame from the resized video
+        while True: # Infinite loop to read and display frames from the video
 
-        cv.imshow("Video", frame) # Displaying the resized video
-        cv.imshow("Resized Video", frame_resized) # Displaying the resized video
+            isTrue, frame = capture.read() # Reading a frame from the video
+            isTrueResized, frame_resized = capture_resized.read() # Reading a frame from the resized video
 
+            cv.imshow("Video", frame) # Displaying the resized video
+            cv.imshow("Resized Video", frame_resized) # Displaying the resized video
+
+            if cv.waitKey(20) & 0xFF == ord('d'): # Breaking the loop if 'd' is pressed
+                break
+        capture.release() # Releasing the VideoCapture object
+        capture_resized.release() # Releasing the resized VideoCapture object
+        cv.destroyAllWindows() # Closing all OpenCV windows
 
 
 if __name__ == "__main__":
