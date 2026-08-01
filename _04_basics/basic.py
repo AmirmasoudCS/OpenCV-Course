@@ -28,7 +28,10 @@ def main():
 
     elif choice == "3":
 
-        canny_image = find_edge(image)
+        th1 = int(input("Please input the value for threshold1: "))
+        th2 = int(input("Please input the value for threshold2: "))
+
+        canny_image = find_edge(image, th1, th2)
 
         cv.imshow("Original Image", image)
         cv.imshow("Edges Found Image", canny_image)
