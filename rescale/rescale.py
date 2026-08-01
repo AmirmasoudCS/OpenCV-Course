@@ -18,3 +18,5 @@ def rescaleFrame(frame, scale=0.75): # Function to rescale the frame by a given 
     dimensions = (width, height) # Creating a tuple of the new dimensions
 
     return cv.resize(frame, dimensions, interpolation=cv.INTER_AREA) # Resizing the frame using the new dimensions and returning it
+
+img_resized = rescaleFrame(img, scale=0.5) # Rescaling the image by a scale factor of 0.5
