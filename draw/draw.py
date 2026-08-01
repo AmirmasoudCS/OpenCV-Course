@@ -50,5 +50,46 @@ def main():
 
     elif choice == "2":
 
+        while True:
+            start_x = int(input("Enter the starting x-coordinate of the portion to paint (0-499): "))
+            if start_x < 0 or start_x > 499:
+                print("Invalid starting x-coordinate. Please enter a value between 0 and 499.")
+                continue
+            break
+
+        while True:
+            finish_x = int(input("Enter the finishing x-coordinate of the portion to paint (0-499): "))
+            if finish_x < 0 or finish_x > 499:
+                print("Invalid finishing x-coordinate. Please enter a value between 0 and 499.")
+                continue
+            if finish_x <= start_x:
+                print("Finishing x-coordinate must be greater than starting x-coordinate. Please enter a valid value.")
+                continue
+            break
+
+        while True:
+            start_y = int(input("Enter the starting y-coordinate of the portion to paint (0-499): "))
+            if start_y < 0 or start_y > 499:
+                print("Invalid starting y-coordinate. Please enter a value between 0 and 499.")
+                continue
+            break
+
+        while True:
+            finish_y = int(input("Enter the finishing y-coordinate of the portion to paint (0-499): "))
+            if finish_y < 0 or finish_y > 499:
+                print("Invalid finishing y-coordinate. Please enter a value between 0 and 499.")
+                continue
+            if finish_y <= start_y:
+                print("Finishing y-coordinate must be greater than starting y-coordinate. Please enter a valid value.")
+                continue
+            break
+
+        painted_image = paint_portion(blank, start_x, finish_x, start_y, finish_y)
+
+        cv.imshow("Painted Portion of Image", painted_image)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
+
+
 if __name__ == "__main__":
     main()
