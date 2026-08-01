@@ -7,7 +7,7 @@ from _04_basics.dilating import dilate
 
 def main():
 
-    image = cv.imread("assets/Photos/img4.jpg")
+    image = cv.imread("assets/Photos/img3.jpg")
 
     choice = input("What do  you want to do?\n(1) Convert to grey scale\n(2) Blur the image.\n(3) Find the edges of an image.\n(4) Blur and find the edges of an image.\n(5) Dilate an image.\n")
 
