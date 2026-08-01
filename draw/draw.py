@@ -83,6 +83,10 @@ def draw_line(image, start_point, end_point, color="red", thickness=1):
     elif color == "blue":
         cv.line(image, start_point, end_point, (255, 0, 0), thickness)
 
+# 6. Writing text on the image
+def write_text(image, text, position, font=cv.FONT_HERSHEY_SIMPLEX, font_scale=1, color=(0, 0, 255), thickness=2):
+    cv.putText(image, text, position, font, font_scale, color, thickness)
+
 def main():
 
     blank = np.zeros((500, 500, 3), dtype='uint8') # Giving in the width, height, and number of color channels (3 for RGB) and dtype = uint8 for 8-bit unsigned integers (0-255)
