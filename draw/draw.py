@@ -28,3 +28,6 @@ def main():
         cv.imshow("Painted Image", painted_image)
         cv.waitKey(0)
         cv.destroyAllWindows()
+
+if __name__ == "__main__":
+    main()
