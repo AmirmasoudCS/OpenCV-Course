@@ -19,6 +19,7 @@ def paint_image(image):
 
     return image
 
+# 2. Paint a portion of the image a certain color
 def paint_portion(image, start_x, finish_x, start_y, finish_y):
     choice = input("What color do you want to paint the portion of the image? (red, green, blue):\n ")
 
@@ -35,6 +36,7 @@ def paint_portion(image, start_x, finish_x, start_y, finish_y):
 
     return image
 
+# 3. Draw a rectangle on the image
 def draw_rectangle(image, start_x, finish_x, start_y, finish_y, color="red", thickness=-1): # You can also fill the image by cv.FILELD
     if color == "red":
         cv.rectangle(image, (start_x, start_y), (finish_x, finish_y), (0, 0, 255), thickness)
