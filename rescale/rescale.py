@@ -1,0 +1,2 @@
+# Displaynig large scaled vidoes and images, which contain a lot of details, can be very slow.
+# By rescaling them, we can speed up the display and reduce memory usage, while still preserving the overall appearance of the content.
