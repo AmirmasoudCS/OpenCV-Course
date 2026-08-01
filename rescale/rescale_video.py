@@ -49,7 +49,8 @@ def main():
     elif choice == "2":
 
         capture = cv.VideoCapture(0) # Creating a VideoCapture object to read from the webcam
-        capture_resized = changeRes(640, 480, capture) # Changing the resolution of the video to 640x480
+        capture_resized = cv.VideoCapture(0) # Creating another VideoCapture object for the resized video
+        changeRes(640, 480, capture) # Changing the resolution of the video to 640x480
 
         isTrue, frame = capture.read() # Reading a frame from the video
         isTrueResized, frame_resized = capture_resized.read() # Reading a frame from the resized video
