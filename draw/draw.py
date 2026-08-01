@@ -35,7 +35,7 @@ def paint_portion(image, start_x, finish_x, start_y, finish_y):
 
     return image
 
-def draw_rectangle(image, start_x, finish_x, start_y, finish_y, color="red", thickness=-1):
+def draw_rectangle(image, start_x, finish_x, start_y, finish_y, color="red", thickness=-1): # You can also fill the image by cv.FILELD
     if color == "red":
         cv.rectangle(image, (start_x, start_y), (finish_x, finish_y), (0, 0, 255), thickness)
     elif color == "green":
