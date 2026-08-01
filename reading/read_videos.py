@@ -15,3 +15,7 @@ while True:
 
 capture.release() # Releasing the video capture object
 cv.destroyAllWindows() # Destroying all the windows opened by OpenCV
+
+# At the end of the vidoe, the video will be closed and an error will be thrown.
+#  more specifically an assertion -215 error, which basically means the video ran out of frames.
+#  To avoid this, we can add a check to see if the video has ended and break the loop if it has.
