@@ -15,3 +15,6 @@ def main():
         cv.imshow("Grey Image", grey_image)
         cv.waitKey(0)
         cv.destroyAllWindows()
+
+if __name__ == "__main__":
+    main()
