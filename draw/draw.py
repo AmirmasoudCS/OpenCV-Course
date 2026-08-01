@@ -67,6 +67,18 @@ def draw_circle(image, center, radius, color="red", thickness=-1):
     elif color == "blue":
         cv.circle(image, center, radius, (255, 0, 0), thickness)
 
+# 5. Draw a line on the image
+def draw_line(image, start_point, end_point, color="red", thickness=1):
+
+    if color == "red":
+        cv.line(image, start_point, end_point, (0, 0, 255), thickness)
+
+    elif color == "green":
+        cv.line(image, start_point, end_point, (0, 255, 0), thickness)
+
+    elif color == "blue":
+        cv.line(image, start_point, end_point, (255, 0, 0), thickness)
+
 def main():
 
     blank = np.zeros((500, 500, 3), dtype='uint8') # Giving in the width, height, and number of color channels (3 for RGB) and dtype = uint8 for 8-bit unsigned integers (0-255)
