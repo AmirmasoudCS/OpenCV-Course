@@ -19,17 +19,36 @@ def paint_image(image):
 
     return image
 
+def paint_portion(image, start_x, finish_x, start_y, finish_y):
+    choice = input("What color do you want to paint the portion of the image? (red, green, blue):\n ")
+
+    if choice == "red":
+        image[start_y:finish_y, start_x:finish_x] = [0, 0, 255]  # BGR format for red
+    elif choice == "green":
+        image[start_y:finish_y, start_x:finish_x] = [0, 255, 0]  # BGR format for green
+    elif choice == "blue":
+        image[start_y:finish_y, start_x:finish_x] = [255, 0, 0]  # BGR format for blue
+    else:
+        print("Invalid color choice. Please choose red, green, or blue.")
+        print("Returning the original image without any changes.")
+        return image
+
+    return image
+
+
 def main():
 
     blank = np.zeros((500, 500, 3), dtype='uint8') # Giving in the width, height, and number of color channels (3 for RGB) and dtype = uint8 for 8-bit unsigned integers (0-255)
 
-    choice = input("What do you want to do with the image?\n (1) Paint the image.\n")
+    choice = input("What do you want to do with the image?\n (1) Paint all the image.\n (2) Paint a protion of the image.\n")
 
     if choice == "1":
         painted_image = paint_image(blank)
         cv.imshow("Painted Image", painted_image)
         cv.waitKey(0)
         cv.destroyAllWindows()
+
+    elif choice == "2":
 
 if __name__ == "__main__":
     main()
