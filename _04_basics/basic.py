@@ -5,7 +5,7 @@ def main():
 
     image = cv.imread("assets/Photos/img4.jpg")
 
-    choice = "What do  you want to do?\n(1) Convert to grey scale\n"
+    choice = input("What do  you want to do?\n(1) Convert to grey scale\n")
 
     if choice == "1":
         
