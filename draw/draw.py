@@ -19,7 +19,7 @@ def paint_image(image):
 
 def main():
 
-    blank = np.zeros((500, 500), dtype='uint8')
+    blank = np.zeros((500, 500, 3), dtype='uint8')
 
     choice = input("What do you want to do with the image?\n (1) Paint the image.\n")
 
