@@ -1,6 +1,10 @@
 import cv2 as cv
 import numpy as np
 
+import os
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 # 1. Paint the image a certain color
 def paint_image(image):
 
@@ -247,6 +251,8 @@ def main():
 
     else:
         print("Invalid choice. Please select a valid option from the menu.")
+
+    
 
 if __name__ == "__main__":
     main()
