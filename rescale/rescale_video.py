@@ -49,22 +49,29 @@ def main():
     elif choice == "2":
 
         capture = cv.VideoCapture(0) # Creating a VideoCapture object to read from the webcam
-        capture_resized = cv.VideoCapture(0) # Creating another VideoCapture object for the resized video
+
+        # You can not open your webcam twice! so make sure to only open it once, and if you want to change the resolution of the webcam, you can do it using the changeRes() function.
+
+        if not capture.isOpened(): # Checking if the webcam is opened successfully
+            print("Error: Could not open webcam.")
+            return
+
         changeRes(640, 480, capture) # Changing the resolution of the video to 640x480
 
         while True: # Infinite loop to read and display frames from the video
 
             isTrue, frame = capture.read() # Reading a frame from the video
-            isTrueResized, frame_resized = capture_resized.read() # Reading a frame from the resized video
 
-            cv.imshow("Video", frame) # Displaying the original video
-            cv.imshow("Resized Video", frame_resized) # Displaying the resized video
-
+            if not isTrue or frame is None: # Checking if the frame was read successfully
+                print("Error: Failed to grab a frame from the webcam.")
+                break
+            
+            cv.imshow("Webcam Stream (640x480)", frame) # Displaying the original video
+            
             if cv.waitKey(20) & 0xFF == ord('d'): # Breaking the loop if 'd' is pressed
                 break
 
         capture.release() # Releasing the VideoCapture object
-        capture_resized.release() # Releasing the resized VideoCapture object
         cv.destroyAllWindows() # Closing all OpenCV windows
 
 
