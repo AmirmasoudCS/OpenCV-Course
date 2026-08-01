@@ -189,6 +189,10 @@ def main():
         if not isinstance(center, tuple) or len(center) != 2:
             print("Invalid center format. Please enter the center as a tuple (x, y).")
             return
+
+        if center[0] < 0 or center[0] > 499 or center[1] < 0 or center[1] > 499:
+            print("Invalid center coordinates. Please ensure both coordinates are between 0 and 499.")
+            return
         
         radius = int(input("Please enter the radius of the circle: "))
         if radius <= 0:
