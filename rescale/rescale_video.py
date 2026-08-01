@@ -4,6 +4,7 @@
 import cv2 as cv
 
 def rescaleFrame(frame, scale=0.75): # Function to rescale the frame by a given scale factor
+    # Images, Videos and Live Video can all be rescaled using this function
 
     width = frame.shape[1] * scale # frame.shape[1] gives the width of the frame, and we multiply it by the scale factor to get the new width
     height = frame.shape[0] * scale # frame.shape[0] gives the height of the frame, and we multiply it by the scale factor to get the new height
@@ -17,17 +18,36 @@ def rescaleFrame(frame, scale=0.75): # Function to rescale the frame by a given 
 
 capture = cv.VideoCapture("Videos/vid1.mp4") # Creating a VideoCapture object to read the video file
 
-while True: # Infinite loop to read and display frames from the video
+def changeRes(width, height): # Function to change the resolution of the video
+    # Live Video
 
-    isTrue, frame = capture.read() # Reading a frame from the video
+    capture.set(3, width) # Setting the width of the video
+    capture.set(4, height) # Setting the height of the video
 
-    resized_frame = rescaleFrame(frame, scale=0.5) # Rescaling the frame by a scale factor of 0.5, take note that rescaling a video by 0.5, reduces the size of it to 0.5 * 0.5 = 0.25, which is a quarter of the original size, if you want to reduce it to half, you should scale = math.sqrt(0.5) instead so sqrt(0.5) * sqrt(0.5) = 0.5, which is half of the original size.
+def main():
 
-    cv.imshow("Video", frame) # Displaying the original frame
-    cv.imshow("Resized Video", resized_frame) # Displaying the rescaled frame
+    choice = 0
+    choice = input("What method of resizing a video do you want to use?\n (1) Rescale the video by a scale factor using the helper function rescaleFrame() .\n (2) Changing the resolution of them using the built in function capture.set method.")
 
-    if cv.waitKey(20) & 0xFF == ord('d'): # Breaking the loop if 'd' is pressed
-        break
+    if choice == "1":
+        while True: # Infinite loop to read and display frames from the video
 
-capture.release() # Releasing the VideoCapture object
-cv.destroyAllWindows() # Closing all OpenCV windows
+            isTrue, frame = capture.read() # Reading a frame from the video
+
+            resized_frame = rescaleFrame(frame, scale=0.5) # Rescaling the frame by a scale factor of 0.5, take note that rescaling a video by 0.5, reduces the size of it to 0.5 * 0.5 = 0.25, which is a quarter of the original size, if you want to reduce it to half, you should scale = math.sqrt(0.5) instead so sqrt(0.5) * sqrt(0.5) = 0.5, which is half of the original size.
+
+            cv.imshow("Video", frame) # Displaying the original frame
+            cv.imshow("Resized Video", resized_frame) # Displaying the rescaled frame
+
+            if cv.waitKey(20) & 0xFF == ord('d'): # Breaking the loop if 'd' is pressed
+                break
+
+        capture.release() # Releasing the VideoCapture object
+        cv.destroyAllWindows() # Closing all OpenCV windows
+
+    elif choice == "2":
+        capture = cv.VideoCapture(0) # Creating a VideoCapture object to read from the webcam
+        capture_resized = changeRes(640, 480) # Changing the resolution of the video to 640x480
+
+        cv.imshow("Video", frame) # Displaying the resized video
+        cv.imshow("Resized Video", capture_resized) # Displaying the resized video
