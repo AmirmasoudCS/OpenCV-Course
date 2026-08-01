@@ -35,12 +35,15 @@ def paint_portion(image, start_x, finish_x, start_y, finish_y):
 
     return image
 
+def draw_rectangle(image, start_x, finish_x, start_y, finish_y):
+    cv.rectangle(image, (start_x, start_y), (finish_x, finish_y))
+
 
 def main():
 
     blank = np.zeros((500, 500, 3), dtype='uint8') # Giving in the width, height, and number of color channels (3 for RGB) and dtype = uint8 for 8-bit unsigned integers (0-255)
 
-    choice = input("What do you want to do with the image?\n (1) Paint all the image.\n (2) Paint a protion of the image.\n")
+    choice = input("What do you want to do with the image?\n(1) Paint all the image.\n(2) Paint a protion of the image.\n(3) Draw a rectangle.\n")
 
     if choice == "1":
         painted_image = paint_image(blank)
@@ -89,6 +92,43 @@ def main():
         cv.imshow("Painted Portion of Image", painted_image)
         cv.waitKey(0)
         cv.destroyAllWindows()
+
+    elif choice == "3":
+        while True:
+            start_x = int(input("Enter the starting x-coordinate of the rectangle (0-499): "))
+            if start_x < 0 or start_x > 499:
+                print("Invalid starting x-coordinate. Please enter a value between 0 and 499.")
+                continue
+            break
+
+        while True:
+            finish_x = int(input("Enter the finishing x-coordinate of the rectangle (0-499): "))
+            if finish_x < 0 or finish_x > 499:
+                print("Invalid finishing x-coordinate. Please enter a value between 0 and 499.")
+                continue
+            if finish_x <= start_x:
+                print("Finishing x-coordinate must be greater than starting x-coordinate. Please enter a valid value.")
+                continue
+            break
+
+        while True:
+            start_y = int(input("Enter the starting y-coordinate of the rectangle (0-499): "))
+            if start_y < 0 or start_y > 499:
+                print("Invalid starting y-coordinate. Please enter a value between 0 and 499.")
+                continue
+            break
+
+        while True:
+            finish_y = int(input("Enter the finishing y-coordinate of the rectangle (0-499): "))
+            if finish_y < 0 or finish_y > 499:
+                print("Invalid finishing y-coordinate. Please enter a value between 0 and 499.")
+                continue
+            if finish_y <= start_y:
+                print("Finishing y-coordinate must be greater than starting y-coordinate. Please enter a valid value.")
+                continue
+            break
+
+        draw_rectangle(blank, start_x, finish_x,  start_y, finish_y)
 
 
 if __name__ == "__main__":
