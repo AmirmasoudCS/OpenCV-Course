@@ -1,6 +1,7 @@
 import cv2 as cv
 
 capture = cv.VideoCapture("Videos/vid1.mp4") # Reading a video file from a path given to it
+# if the path given to the VideoCapture function is not correct, it will throw an Assertion -215 error, which basically means the video file was not found.
 
 # You can also use a webcam by passing 0 or 1 to the VideoCapture function: cv.VideoCapture(0) or cv.VideoCapture(1)
 
