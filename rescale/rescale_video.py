@@ -57,11 +57,12 @@ def main():
             isTrue, frame = capture.read() # Reading a frame from the video
             isTrueResized, frame_resized = capture_resized.read() # Reading a frame from the resized video
 
-            cv.imshow("Video", frame) # Displaying the resized video
+            cv.imshow("Video", frame) # Displaying the original video
             cv.imshow("Resized Video", frame_resized) # Displaying the resized video
 
             if cv.waitKey(20) & 0xFF == ord('d'): # Breaking the loop if 'd' is pressed
                 break
+
         capture.release() # Releasing the VideoCapture object
         capture_resized.release() # Releasing the resized VideoCapture object
         cv.destroyAllWindows() # Closing all OpenCV windows
