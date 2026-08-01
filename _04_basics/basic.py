@@ -3,13 +3,14 @@ from _04_basics.grey_scale import to_grey
 from _04_basics.blur import blur
 from _04_basics.edge_cascade import find_edge
 from _04_basics.dilating import dilate
+from _04_basics.eroding import erode
 
 
 def main():
 
     image = cv.imread("assets/Photos/img3.jpg")
 
-    choice = input("What do  you want to do?\n(1) Convert to grey scale\n(2) Blur the image.\n(3) Find the edges of an image.\n(4) Blur and find the edges of an image.\n(5) Dilate an image.\n")
+    choice = input("What do  you want to do?\n(1) Convert to grey scale\n(2) Blur the image.\n(3) Find the edges of an image.\n(4) Blur and find the edges of an image.\n(5) Dilate an image.\n(6) Eroding an image.\n")
 
     if choice == "1":
         
@@ -71,6 +72,20 @@ def main():
         cv.waitKey(0)
         cv.destroyAllWindows()
 
+    elif choice == "6":
+
+        kernel_size: tuple[int, int] = eval(input("Please enter the kernel size in the (x, y) format: "))
+        iterations = int(input("Please enter the number of iterations: "))
+
+        canny_image = find_edge(image)
+        dilated_image = dilate(canny_image, kernel_size, iterations)
+        eroded_image = erode(image, kernel_size, iterations)
+
+        cv.imshow("Original Image", image)
+        cv.imshow("Eroded Image", eroded_image)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
+        
     else:
         print("Wrong input!")
         return
