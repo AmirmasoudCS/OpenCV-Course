@@ -21,7 +21,7 @@ def main():
 
     blank = np.zeros((500, 500), dtype='uint8')
 
-    choice = input("What do you want to do with the image?\n (1) Paint the image.")
+    choice = input("What do you want to do with the image?\n (1) Paint the image.\n")
 
     if choice == "1":
         painted_image = paint_image(blank)
