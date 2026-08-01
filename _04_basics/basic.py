@@ -1,12 +1,12 @@
 import cv2 as cv
 from _04_basics.grey_scale import to_grey
 from _04_basics.blur import blur
-
+from _04_basics.edge_cascade import find_edge
 def main():
 
     image = cv.imread("assets/Photos/img4.jpg")
 
-    choice = input("What do  you want to do?\n(1) Convert to grey scale\n(2) Blur the image.\n")
+    choice = input("What do  you want to do?\n(1) Convert to grey scale\n(2) Blur the image.\n(3) Find the edges of an image.\n")
 
     if choice == "1":
         
@@ -23,6 +23,15 @@ def main():
 
         cv.imshow("Original Image", image)
         cv.imshow("Blurred Image", blured_image)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
+
+    elif choice == "3":
+
+        canny_image = find_edge(image)
+
+        cv.imshow("Original Image", image)
+        cv.imshow("Edges Found Image", canny_image)
         cv.waitKey(0)
         cv.destroyAllWindows()
 
