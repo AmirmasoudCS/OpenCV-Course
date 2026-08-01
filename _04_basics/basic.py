@@ -45,7 +45,7 @@ def main():
         th1 = int(input("Please input the value for threshold1: "))
         th2 = int(input("Please input the value for threshold2: "))
 
-        canny_iamge = find_edge(image, th1, th2)
+        canny_image = find_edge(image, th1, th2)
         canny_blurred_image = find_edge(blured_image, th1, th2)
 
         cv.imshow("Original Image", image)
