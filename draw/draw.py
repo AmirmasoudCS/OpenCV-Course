@@ -245,5 +245,8 @@ def main():
         cv.waitKey(0)
         cv.destroyAllWindows()
 
+    else:
+        print("Invalid choice. Please select a valid option from the menu.")
+
 if __name__ == "__main__":
     main()
