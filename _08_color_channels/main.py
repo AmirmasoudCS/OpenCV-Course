@@ -13,6 +13,13 @@ def main():
     cv.imshow("Blue Channels", b)
     cv.imshow("Green Channels", g)
     cv.imshow("Red Channels", r)
+
+    print(image.shape)
+    print(b.shape)
+    print(g.shape)
+    print(r.shape)
+        
+    
     cv.waitKey(0)
     cv.destroyAllWindows()
 
