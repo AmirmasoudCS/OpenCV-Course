@@ -13,7 +13,7 @@ def main():
     b, g, r = cv.split(image)
 
     blue_image = cv.merge([b, blank, blank])
-    green_image = cv.merge([blank, g. blank])
+    green_image = cv.merge([blank, g, blank])
     red_image = cv.merge([blank, blank, r])
 
     cv.imshow("Blue Image", blue_image)
