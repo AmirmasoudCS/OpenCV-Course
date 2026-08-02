@@ -6,7 +6,7 @@ import numpy as np
 
 def main():
 
-    image = cv.imread("assets/Photos/img7_large.jpg")
+    image = cv.imread("assets/Photos/central_park1.jpg")
 
     b, g, r = cv.split(image)
 
