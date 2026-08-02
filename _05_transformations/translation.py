@@ -1,0 +1,1 @@
+# Translation is shifting an image along the X and Y axis ( up, down, left, right) or any combination of them
