@@ -13,7 +13,7 @@ def main():
     img = cv.imread("assets/Photos/eiffel_tower_2.jpg")
     grey_img = to_grey(img)
 
-    blank = np.zeros(img.shape[:2], dtype="uint8")
+    blank = np.zeros(img.shape, dtype="uint8")
 
     choice = int(input("Which method of finding contours you want to do?\n(1) Blurring --> canny --> contours.\n(2) cv.threshold().\n"))
 
