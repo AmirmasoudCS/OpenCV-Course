@@ -19,7 +19,7 @@ def main():
         cv.waitKey(0)
         cv.destroyAllWindows()
 
-    elif choice ==" 3":
+    elif choice ==" 2":
 
         angle = int(input("please enter the angle you wish to rotate the image with: "))
         angle = angle % 360
