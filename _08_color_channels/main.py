@@ -8,7 +8,17 @@ def main():
 
     image = cv.imread("assets/Photos/boston_park.jpg")
 
+    blank = np.zeros(image.shape, dtype="uint8")
+
     b, g, r = cv.split(image)
+
+    blue_image = cv.merge([b, blank, blank])
+    green_image = cv.merge([blank, g. blank])
+    red_image = cv.merge([blank, blank, r])
+
+    cv.imshow("Blue Image", blue_image)
+    cv.imshow("Green Image", green_image)
+    cv.imshow("Red Image", red_image)
 
     cv.imshow("Blue Channels", b)   # These images are shown in greyscael, and the meaning of pixels in greyscale
     cv.imshow("Green Channels", g)  # is that wherever it is lighter, the density of that color in that specific
