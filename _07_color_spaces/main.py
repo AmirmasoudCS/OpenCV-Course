@@ -1,4 +1,5 @@
 import cv2 as cv
+import matplotlib.pyplot as plt
 
 def main():
 
@@ -26,7 +27,13 @@ def main():
     lab = cv.cvtColor(image, cv.COLOR_BGR2LAB)
 
     cv.imshow("LAB", lab)
-    
+
+    #
+
+    # Since OpenCV library reads images in BGR color space, if you want to show an image that was read by cv, with another library (like matplotlib), you get exactly the inversion of the colors
+
+    plt.imshow(image)
+    plt.show()
 
     cv.waitKey(0)
     cv.destroyAllWindows()
