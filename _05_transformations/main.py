@@ -38,7 +38,7 @@ def main():
 
         flip_choice = int(input("What axis do you want to flip against? (0:x, 1:y, -1:both): "))
 
-        if choice not in [0, 1, -1]:
+        if flip_choice not in (0, 1, -1):
             print("Wrong choice!")
             return
 
