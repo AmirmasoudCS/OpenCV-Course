@@ -24,9 +24,9 @@ def main():
         angle = int(input("please enter the angle you wish to rotate the image with: "))
         angle = angle % 360
 
-        rotation_center: tuple[int, int] = eval(input("Please enter the rotation point in the form of (x, y): "))
+        rotation_center: tuple[int, int] = eval(input("Please enter the rotation point in the form of (x, y) (-1 for default): "))
 
-        rotated_image = rotate(image, angle, rotation_center)
+        rotated_image = rotate(image=image, angle=angle, rotation_point=rotation_center if rotation_center is not -1 else None)
 
         cv.imshow("Original Image", image)
         cv.imshow("Rotated Image", rotated_image)
