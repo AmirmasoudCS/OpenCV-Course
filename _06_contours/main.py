@@ -1,6 +1,7 @@
 # Contours are basically the boundaries of objects, the line that occurs that joint the continuous points along the boundary of an object
 # From a mathematical view they are not the same as the edges ( you can get away mostly with contours=edges )
 import cv2 as cv
+import numpy as np
 from _04_basics.grey_scale import to_grey
 from _04_basics.edge_cascade import find_edge
 from _04_basics.blur import blur
@@ -12,6 +13,8 @@ def main():
     img = cv.imread("assets/Photos/eiffel_tower_2.jpg")
     grey_img = to_grey(img)
 
+    blank = np.zeros(img.shape[:2], dtype="uint8")
+
     choice = int(input("Which method of finding contours you want to do?\n(1) Blurring --> canny --> contours.\n(2) cv.threshold().\n"))
 
     if choice == 1:
@@ -21,6 +24,9 @@ def main():
         contours, hierarchies = find_contours(canny_image)
 
         print(f"{len(contours)} contour(s) were found!")
+
+        cv.drawContours(blank, contours, -1, (0, 0, 255), 2) # Takes and image, the list of contoures to draw on the image, index of contoures ( for all is -1 ), color, thicknes
+        cv.imshow("Contoures Drawn", blank)
 
         cv.imshow("Canny Image", canny_image)
         cv.waitKey(0)
@@ -35,6 +41,10 @@ def main():
         contours, hierarchies = cv.findContours(thresh, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
 
         print(f"{len(contours)} contour(s) were found!")
+
+        cv.drawContours(blank, contours, -1, (0, 0, 255), 2) # Takes and image, the list of contoures to draw on the image, index of contoures ( for all is -1 ), color, thicknes
+        cv.imshow("Contoures Drawn", blank)
+        
 
         cv.imshow("Thresh", thresh)
         cv.waitKey(0)
