@@ -36,6 +36,10 @@ def main():
 
         print(f"{len(contours)} contour(s) were found!")
 
+        cv.imshow("Thresh", thresh)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
+
 
     else:
         print("Wrong input!")
