@@ -7,20 +7,32 @@ from _04_basics.blur import blur
 from _06_contours.find_contours import find_contours
 
 def main():
+    
      
     img = cv.imread("assets/Photos/eiffel_tower_2.jpg")
     grey_img = to_grey(img)
-    blurred_image = blur(grey_img)
-    canny_image = find_edge(blurred_image, th1=125, th2=175)
-    contours, hierarchies = find_contours(canny_image)
 
-    print(f"{len(contours)} contour(s) were found!")
+    choice = int(input("Which method of finding contours you want to do?\n(1) Blurring --> canny --> contours.\n(2) cv.threshold().\n"))
 
-    cv.imshow("Canny Image", canny_image)
-    cv.waitKey(0)
-    cv.destroyAllWindows()
+    if choice == "1":
 
+        blurred_image = blur(grey_img)
+        canny_image = find_edge(blurred_image, th1=125, th2=175)
+        contours, hierarchies = find_contours(canny_image)
 
+        print(f"{len(contours)} contour(s) were found!")
+
+        cv.imshow("Canny Image", canny_image)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
+
+    elif choice == "2":
+        pass
+
+    else:
+        print("Wrong input!")
+        return
+    
 
 
 if __name__ == "__main__":
