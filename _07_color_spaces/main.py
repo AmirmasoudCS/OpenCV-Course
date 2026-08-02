@@ -48,5 +48,12 @@ def main():
     cv.waitKey(0)
     cv.destroyAllWindows()
 
+
+    # You can do the inverse of whatever you did now e.g.
+    # Greyscale --> BGR
+    # HSV --> BGR ...
+    # But you can not directly convert something like Greyscale --> HSV (X)
+    # Inorder to do that you need to Greyscale --> BGR --> HSV
+
 if __name__ == "__main__":
     main()
