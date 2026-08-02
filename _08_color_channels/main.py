@@ -13,6 +13,8 @@ def main():
     cv.imshow("Blue Channels", b)
     cv.imshow("Green Channels", g)
     cv.imshow("Red Channels", r)
+    cv.waitKey(0)
+    cv.destroyAllWindows()
 
 
 if __name__ == "__main__":
