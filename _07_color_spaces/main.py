@@ -19,5 +19,9 @@ def main():
 
     cv.imshow("HSV Image", hsv)
 
+
+    cv.waitKey(0)
+    cv.destroyAllWindows()
+
 if __name__ == "__main__":
     main()
