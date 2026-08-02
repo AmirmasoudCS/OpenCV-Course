@@ -8,7 +8,7 @@ def main():
 
     image = cv.imread("assets/Photos/boston_park.jpg")
 
-    blank = np.zeros(image.shape, dtype="uint8")
+    blank = np.zeros(image.shape[:2], dtype="uint8")
 
     b, g, r = cv.split(image)
 
