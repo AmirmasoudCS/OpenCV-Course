@@ -13,6 +13,11 @@ def main():
 
     # Greyscale images show you the distribution of the pixel intensities at particulatr palces of your image
 
+    # BGR to HSV (based on how humans think and can see the color)
+
+    hsv = cv.cvtColor(image, cv.COLOR_BGR2HSV)
+
+    cv.imshow("HSV Image", hsv)
 
 if __name__ == "__main__":
     main()
