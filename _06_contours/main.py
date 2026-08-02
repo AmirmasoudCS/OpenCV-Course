@@ -35,6 +35,9 @@ def main():
 
         contours, hierarchies = cv.findContours(thresh, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
 
+        print(f"{len(contours)} contour(s) were found!")
+
+
     else:
         print("Wrong input!")
         return
