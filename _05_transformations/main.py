@@ -27,7 +27,7 @@ def main():
 
         rotation_center: tuple[int, int] = eval(input("Please enter the rotation point in the form of (x, y) (-1 for default): "))
 
-        rotated_image = rotate(image=image, angle=angle, rotation_point=rotation_center if rotation_center is not -1 else None)
+        rotated_image = rotate(image=image, angle=angle, rotation_point=rotation_center if rotation_center != -1 else None)
 
         cv.imshow("Original Image", image)
         cv.imshow("Rotated Image", rotated_image)
@@ -36,9 +36,9 @@ def main():
 
     elif choice == "3":
 
-        flip_choice = int(input("What axis do you want to flip against? (0:x, 1:y, -1:both)"))
+        flip_choice = int(input("What axis do you want to flip against? (0:x, 1:y, -1:both): "))
 
-        if choice not in (1,-1,0):
+        if choice not in [0, 1, -1]:
             print("Wrong choice!")
             return
 
