@@ -35,6 +35,16 @@ def main():
     plt.imshow(image)
     plt.show()
 
+    # 
+
+    # BGR to RGB
+
+    rgb = cv.cvtColor(image, cv.COLOR_BGR2RGB)
+
+    cv.imshow("RGB", rgb)
+    plt.imshow(rgb)
+    plt.show()
+
     cv.waitKey(0)
     cv.destroyAllWindows()
 
