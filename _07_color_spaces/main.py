@@ -21,6 +21,13 @@ def main():
 
     # Based on how humans think and can see the color
 
+    # BGR to LAB or L*a*b
+
+    lab = cv.cvtColor(image, cv.COLOR_BGR2LAB)
+
+    cv.imshow("LAB", lab)
+    
+
     cv.waitKey(0)
     cv.destroyAllWindows()
 
