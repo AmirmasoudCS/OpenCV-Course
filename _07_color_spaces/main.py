@@ -11,7 +11,8 @@ def main():
 
     cv.imshow("Grey Image", grey)
 
-    
+    # Greyscale images show you the distribution of the pixel intensities at particulatr palces of your image
+
 
 if __name__ == "__main__":
     main()
