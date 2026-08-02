@@ -5,6 +5,7 @@ from _04_basics.grey_scale import to_grey
 from _04_basics.edge_cascade import find_edge
 from _04_basics.blur import blur
 from _06_contours.find_contours import find_contours
+from _06_contours.threshold import threshold
 
 def main():
     
@@ -27,7 +28,12 @@ def main():
         cv.destroyAllWindows()
 
     elif choice == "2":
-        pass
+        threshold_value = int(input("Please enter the threshold value: "))
+        maximum_value = int(input("Please enter the maximum value: "))
+
+        ret, thresh = threshold(img=grey_img, threshold=threshold_value, maximum=maximum_value)
+
+        contours, hierarchies = cv.findContours(thresh, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
 
     else:
         print("Wrong input!")
