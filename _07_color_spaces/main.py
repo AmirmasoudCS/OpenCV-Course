@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 def main():
 
-    image = cv.imread("assets/Photos/img6.jpg")
+    image = cv.imread("assets/Photos/img5.jpg")
     cv.imshow("Original Image", image)
 
     # BGR to Greyscale
