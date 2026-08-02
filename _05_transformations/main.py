@@ -5,7 +5,7 @@ def main():
 
     image = cv.imread("assets/Photos/img2.jpg")
 
-    choice = input("Waht you want to do?\n(1) Translate and image.\n")
+    choice = input("Waht you want to do?\n(1) Translate an image.\n")
 
     if choice == "1":
         x = input("Please input x: ")
