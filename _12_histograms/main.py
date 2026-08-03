@@ -6,36 +6,49 @@ import numpy as np
 
 def main():
 
+    choice = input("(1) Greyscaled Histogram.\n(2) Masked Greyscaled Histogram.\n")
+
     image = cv.imread("assets/Photos/boston_park.jpg")
-
     grey_image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-    cv.imshow("Grey Image", grey_image)
 
-    # Greyscale Histogram
 
-    grey_histogram = cv.calcHist([grey_image], [0], None, [256], [0, 256])      # Images should be passed as a list, second argument is the index of number of channels which in terms of greyscale images is 1, third argument is a mask if 
-                                                                                # we want to compute a masked area histogram for, fourth parameter is the number of bins we want to compute the histogram on, and last argument is the range of pixels
-    plt.figure()
-    plt.title("Greyscale Histogram")
-    plt.xlabel("Bins")
-    plt.ylabel("# of Pixels")
-    plt.plot(grey_histogram)
-    plt.xlim([0, 256])
-    plt.show()
+    if choice == "1":
 
-    # We can also use mask to compute the pixel density in a particular place in an image using the mask
+        cv.imshow("Grey Image", grey_image)
+        
+        # Greyscale Histogram
+    
+        grey_histogram = cv.calcHist([grey_image], [0], None, [256], [0, 256])      # Images should be passed as a list, second argument is the index of number of channels which in terms of greyscale images is 1, third argument is a mask if 
+                                                                                    # we want to compute a masked area histogram for, fourth parameter is the number of bins we want to compute the histogram on, and last argument is the range of pixels
+        plt.figure()
+        plt.title("Greyscale Histogram")
+        plt.xlabel("Bins")
+        plt.ylabel("# of Pixels")
+        plt.xlim([0, 256])
+        plt.plot(grey_histogram)
+        plt.show()
+        
 
-    blank = np.zeros(image.shape[:2], dtype="uint8")
-    cv.circle(blank, (image.shape[1] // 2, image.shape[0] // 2), 75, 255, -1)
+    elif choice == "2":
 
-    mask_histogram = cv.calcHist([grey_image], [0], None, [256], [0, 256], blank)
+        # We can also use mask to compute the pixel density in a particular place in an image using the mask
+    
+        blank = np.zeros(image.shape[:2], dtype="uint8")
+        cv.circle(blank, (image.shape[1] // 2, image.shape[0] // 2), 75, 255, -1)
+    
+        mask_histogram = cv.calcHist([grey_image], [0], None, [256], [0, 256], blank)
+    
+        plt.figure()
+        plt.title("Greyscal Masked Histogram")
+        plt.xlabel("Bin")
+        plt.ylabel("# of Pixels")
+        plt.xlim([0, 256])
+        plt.plot(mask_histogram)
+        plt.show()
 
-    plt.figure()
-    plt.title("Greyscal Masked Histogram")
-    plt.xlabel("Bin")
-    plt.ylabel("# of Pixels")
-    plt.xlim([0, 256])
-    plt.show()
+    else:
+        print("Wrong input!")
+        return
 
     cv.waitKey(0)
     cv.destroyAllWindows()
