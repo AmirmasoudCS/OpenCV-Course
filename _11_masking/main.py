@@ -18,7 +18,7 @@ def main():
     cv.imshow("Mask", mask)
 
     masked_image = cv.bitwise_and(image, image, mask=mask)
-    cv.imshow("Masked Image", masked_image)
+    cv.imshow("Masked Image", masked_image) # You can create masks that are bitwise_and and bitwise_or of the circles and rectangles
 
     cv.waitKey(0)
     cv.destroyAllWindows()
