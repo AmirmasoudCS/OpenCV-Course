@@ -294,7 +294,7 @@ The detector performed very well on individual portraits where the face was:
 For these images, the Haar Cascade classifier was able to accurately locate the face region.
 
 <div align="center">
-<img src="">
+<img src="assets/outputs/jl2.jpg">
 </div>
 
 *Example: Successful detection on a single-face image.*
@@ -308,7 +308,7 @@ The three beetle insect images were correctly classified as containing no faces.
 This demonstrates that the detector did not simply detect arbitrary objects and was able to distinguish between human facial patterns and unrelated objects.
 
 <div align="center">
-<img src="">
+<img src="assets/outputs/b1.jpg">
 </div>
 
 *Example: Negative samples where no faces were detected.*
@@ -320,7 +320,7 @@ This demonstrates that the detector did not simply detect arbitrary objects and 
 In two images, the detector incorrectly identified parts of the person's collar as faces.
 
 <div align="center">
-<img src="">
+<img src="assets/outputs/pm2.jpg">
 </div>
 
 *Example: False positive detection on clothing regions.*
@@ -346,7 +346,7 @@ Because of this, the classifier may occasionally produce false detections in reg
 In one group image, the detector failed to identify several faces.
 
 <div align="center">
-<img src="">
+<img src="assets/outputs/tb5.jpg">
 </div>
 
 *Example: Missed detections caused by low image resolution.*
@@ -362,7 +362,7 @@ When the image was enlarged, the faces appeared pixelated, meaning that importan
 In another group image, one face was not detected despite having relatively high image quality.
 
 <div align="center">
-<img src="">
+<img src="assets/outputs/tb6.jpg">
 </div>
 
 *Example: Missed detection despite good image quality.*
@@ -385,7 +385,7 @@ Since Haar Cascade mainly detects patterns associated with frontal faces, small 
 In another image, George Harrison's face from the *Revolver* album cover was not detected.
 
 <div align="center">
-<img src="">
+<img src="assets/outputs/tb7.jpg">
 </div>
 
 *Example: Missed detection caused by face orientation.*
@@ -407,7 +407,7 @@ Haar Cascade performs best on frontal faces and generally becomes less reliable 
 One group image failed to detect Ringo Starr's face even though he was looking toward the camera.
 
 <div align="center">
-<img src="">
+<img src="assets/outputs/tb4.jpg">
 </div>
 
 *Example: Missed detection of a frontal face.*
