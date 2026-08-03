@@ -6,7 +6,7 @@ import numpy as np
 
 def main():
 
-    choice = input("(1) Greyscaled Histogram.\n(2) Masked Greyscaled Histogram.\n")
+    choice = input("(1) Greyscaled Histogram.\n(2) Masked Greyscaled Histogram.\n(3) Coloured Histogram.\n")
 
     image = cv.imread("assets/Photos/boston_park.jpg")
     grey_image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
@@ -50,6 +50,26 @@ def main():
         plt.ylim([0, 5000])
         plt.plot(mask_histogram)
         plt.show()
+
+    elif choice == "3":
+
+        cv.imshow("Original Image", image)
+
+        plt.figure()
+        plt.title("Coloured Histogram")
+        plt.xlabel("Bins")
+        plt.ylabel("# of Pixels")
+
+        colours = ('b', 'g', 'r')
+
+        for i, col in enumerate(colours):
+            hist = cv.calcHist([image], [i], None, 256, [0, 256])
+            plt.plot(hist)
+            plt.xlim([0, 256])
+            plt.ylim([0, 4000])
+
+        plt.show()
+        
 
     else:
         print("Wrong input!")
