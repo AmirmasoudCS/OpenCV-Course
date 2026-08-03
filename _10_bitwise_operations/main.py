@@ -15,6 +15,13 @@ def main():
 
     cv.imshow("Rectangle", rectangle)
     cv.imshow("Circle", circle)
+
+
+    # Bitwise AND
+
+    bitwise_and = cv.bitwise_and(rectangle, circle)
+    cv.imshow("AND", bitwise_and)
+
     cv.waitKey(0)
     cv.destroyAllWindows()
 
