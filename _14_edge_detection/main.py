@@ -25,9 +25,11 @@ def main():
     
     sobelx = cv.Sobel(grey_image, cv.CV_64F, 1, 0)  # 1 : x-axis, 0 : y-axis
     sobely = cv.Sobel(grey_image, cv.CV_64F, 0, 1)  # 0: x-axis, 1 : y-axis
+    combined_sobel = cv.bitwise_or(sobelx, sobely)
 
     cv.imshow("Sobel X", sobelx)
     cv.imshow("Sobel Y", sobely)
+    cv.imshow("Combined Sobel", combined_sobel)
 
 
 
