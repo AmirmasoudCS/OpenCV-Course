@@ -20,6 +20,15 @@ def main():
     cv.imshow("Laplacian Image", lap)
 
 
+    # Sobel
+    # Computes Gradiants in two directions: (1) x-axis (2) y-axis
+    
+    sobelx = cv.Sobel(grey_image, cv.CV_64F, 1, 0)  # 1 : x-axis, 0 : y-axis
+    sobely = cv.Sobel(grey_image, cv.CV_64F, 0, 1)  # 0: x-axis, 1 : y-axis
+
+    cv.imshow("Sobel X", sobelx)
+    cv.imshow("Sobel Y", sobely)
+
 
 
 
