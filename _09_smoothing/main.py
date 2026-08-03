@@ -33,6 +33,18 @@ def main():
     median = cv.medianBlur(image, 7) # The kernel size here is only an :int, but the OpenCV assumes itself that it is a tuple of [int, int]
     cv.imshow("Median Blur", median)
 
+    # Bilateral
+    # The most effective and mostly used in the advanced computer vision projects
+    # It is effective because of how it blurs, the classic ways of blurring, blurred without taking into consideration of wether if you are reducing the edges in the image or not
+    # This method applies blurring but you retain the edges as well
+
+
+    bilateral = cv.bilateralFilter(image, 5, 15, 15)    # This method does not use a kernel size, but instead it uses a diamtere parameter
+                                                        # a larger value of sigmaColor means that there are more colors in the neighbourhood that would be considered when the filter is applied
+                                                        # a larger values for sigmaSpace means that the pixels from further away affect the blurring more
+
+    cv.imshow("Bilateral Filter", bilateral)
+
     cv.waitKey(0)
     cv.destroyAllWindows()
     
