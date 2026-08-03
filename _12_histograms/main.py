@@ -25,6 +25,7 @@ def main():
         plt.xlabel("Bins")
         plt.ylabel("# of Pixels")
         plt.xlim([0, 256])
+        plt.ylim([0, 5000])
         plt.plot(grey_histogram)
         plt.show()
         
