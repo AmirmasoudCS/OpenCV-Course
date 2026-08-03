@@ -40,7 +40,7 @@ def main():
         masked_image = cv.bitwise_and(grey_image, grey_image, mask=mask)
         cv.imshow("Masked Image", masked_image)
 
-        mask_histogram = cv.calcHist([grey_image], [0], mask ,None, [256], [0, 256])
+        mask_histogram = cv.calcHist(images=[grey_image], channels=[0], mask=mask , ranges=[0, 256], histSize=[256])
     
         plt.figure()
         plt.title("Greyscal Masked Histogram")
