@@ -16,7 +16,9 @@ def main():
     mask = cv.circle(blank, (image.shape[1]//2, image.shape[0]//2), 100, 255, -1)
 
     cv.imshow("Mask", mask)
-    
+
+    masked_image = cv.bitwise_and(image, image, mask=mask)
+    cv.imshow("Masked Image", masked_image)
 
     cv.waitKey(0)
     cv.destroyAllWindows()
