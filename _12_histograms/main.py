@@ -35,7 +35,10 @@ def main():
     
         blank = np.zeros(image.shape[:2], dtype="uint8")
         cv.circle(blank, (image.shape[1] // 2, image.shape[0] // 2), 75, 255, -1)
-    
+
+        masked_image = cv.bitwise_and(image, blank)
+        cv.imshow("Masked Image", masked_image)
+
         mask_histogram = cv.calcHist([grey_image], [0], None, [256], [0, 256], blank)
     
         plt.figure()
