@@ -1,5 +1,7 @@
 # Face Detection Pipeline Using OpenCV Haar Cascades
 
+![The Beatles](assets/outputs/tb1.jpg)
+
 ## Overview
 
 This project implements a simple face detection pipeline using OpenCV. The goal of this project is to detect human faces in images and draw bounding boxes around the detected faces.
@@ -226,7 +228,7 @@ What file do you want to perform Face Detection on?
 ```
 > Outputs will only be saved when All option is selected.
 
-# Outputs Analysis
+# Results Analysis
 
 # Limitations
 Although Haar Cascade is fast and lightweight, it has several limitations:
