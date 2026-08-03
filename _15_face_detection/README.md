@@ -1,4 +1,4 @@
-# Face Detection Using OpenCV Haar Cascades
+# Face Detection Pipeline Using OpenCV Haar Cascades
 
 ## Overview
 
@@ -21,7 +21,7 @@ The task is to build a face detection system that:
 2. Detects all faces present in the image.
 3. Draws bounding boxes around detected faces.
 4. Displays the result.
-5. Provides an option to process all images in the dataset and save the outputs.
+5. Provides an option to process all images in the image collection and save the outputs.
 
 The system supports two modes:
 
@@ -47,7 +47,7 @@ main.py
 v
 pipeline.py
 |
-|-- Loads face detector
+|-- Loads Haar Cascade classifier
 |-- Controls execution flow
 |
 v
@@ -83,7 +83,7 @@ Haar Cascade is a classical computer vision algorithm based on:
 - AdaBoost machine learning
 - Cascade classifiers
 
-The classifier has been trained on a large dataset of positive examples (images containing faces) and negative examples (images without faces).
+The classifier has been trained on a large image collection of positive examples (images containing faces) and negative examples (images without faces).
 
 ---
 
@@ -135,6 +135,8 @@ cv.rectangle()
 ```
 The final image contains visual indications of detected faces.
 
+During detection, the classifier evaluates different regions of the image and rejects non-face regions through a cascade of increasingly complex classifiers.
+
 # Project Overview
 ```text
 📁 _15_face_detection
@@ -148,7 +150,7 @@ The final image contains visual indications of detected faces.
 │   │   ├── 🖼️ gh3.jpg
 │   │   ├── 🖼️ jl1.jpg
 │   │   ├── 🖼️ jl2.jpg
-│   │   ├── 🖼️ pm1.pg.jpg
+│   │   ├── 🖼️ pm1.jpg
 │   │   ├── 🖼️ pm2.jpg
 │   │   ├── 🖼️ pm3.jpg
 │   │   ├── 🖼️ rs1.jpg
@@ -205,7 +207,7 @@ cd _15_face_detection
 ```
 Install the required dependency:
 ```bash
-pip -r install face_detection_requirements.txt
+pip install -r face_detection_requirements.txt
 ```
 Run the project:
 ```bash
@@ -231,11 +233,11 @@ Although Haar Cascade is fast and lightweight, it has several limitations:
 - It may struggle with faces that are not frontal.
 - It is sensitive to lighting conditions.
 - It can produce false positives.
-- It is less robust compared to modern deep learning based detectors.
+- It is less robust compared to modern deep learning-based detectors.
 More advanced approaches, such as CNN-based face detectors, generally provide better accuracy but require more computational resources.
 # Future Improvements
 Possible extensions of this project include:
-- Replacing Haar Cascade with a deep learning based detector.
+- Replacing Haar Cascade with a deep learning-based detector.
 - Adding confidence scores.
 - Supporting video and webcam detection.
 - Comparing classical and deep learning approaches.
