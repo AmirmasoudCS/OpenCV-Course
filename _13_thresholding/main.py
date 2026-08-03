@@ -16,7 +16,7 @@ def main():
 
     # Simple Thresholding
 
-    threshold, thresh = cv.threshold(grey_image, 150, 255, cv.THRESH_BINARY)    # (soruce_image, threshold, maximum_value, thresholding_method)
+    threshold, thresh = cv.threshold(grey_image, 150, 255, cv.THRESH_BINARY)    # (soruce_image, threshold, maximum_value, thresholding_type)
                                                                                 # It takes every pixel and compares it to threshold value:
                                                                                 # if pixel_value < threshold_value --> pixel_value := 0
                                                                                 # if pixel_value > threshold_value --> pixel_value := maximum_value (255)
@@ -27,6 +27,18 @@ def main():
     threshold_inv, thresh_inv = cv.threshold(grey_image, 150, 255, cv.THRESH_BINARY_INV)
 
     cv.imshow("Inversed Binary Image", thresh_inv)
+
+
+    # Adaptice Thresholding
+    # A downside of Simple Thresholding is that we have to set the value of threshold manually which might not really work in binarization of an image
+    # A good way of resolving this is to let the computer itself decide what to put the threshold to
+
+    adaptive_thresh = cv.adaptiveThreshold(grey_image, 255, cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY, 11, 3) # (source, maximum_value, method, thresholding_type, block_size, c)
+                                                                                                                # The meathod of thresholding is basically how computer handles the calculation of finding threshold (here is mean)
+                                                                                                                # Type of thresholding is the same as Simple Thresholding
+                                                                                                                # block_size basically tells how far do we let the pixels to affect the mean method
+                                                                                                                # c is just a parameter letting us to fine-tune our thresholder
+    cv.imshow("Adaptive Threshold", adaptive_thresh) 
 
 
 
