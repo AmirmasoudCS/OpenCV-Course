@@ -42,6 +42,7 @@ def main():
     bilateral = cv.bilateralFilter(image, 5, 25, 25)    # This method does not use a kernel size, but instead it uses a diamtere parameter
                                                         # a larger value of sigmaColor means that there are more colors in the neighbourhood that would be considered when the filter is applied
                                                         # a larger values for sigmaSpace means that the pixels from further away affect the blurring more
+                                                        # Increasing the parameters of Bilateral Filter, tends to smudge the image and make it look like other filters (like Median)
 
     cv.imshow("Bilateral Filter", bilateral)
 
