@@ -230,8 +230,237 @@ What file do you want to perform Face Detection on?
 ```
 > Outputs will only be saved when All option is selected.
 
-# Results Analysis
+# Outputs Analysis
 
+## Dataset Overview
+
+The face detection pipeline was evaluated on a collection of **21 images** containing both human faces and non-human subjects.
+
+The dataset includes images of:
+
+- The Beatles (musical band)
+- Beetle insects (non-human images)
+
+The human face images consist of:
+
+- 3 images of George Harrison
+- 2 images of John Lennon
+- 3 images of Paul McCartney
+- 3 images of Ringo Starr
+- 7 group images of The Beatles
+
+The dataset contains a mixture of:
+
+- Colored and grayscale images.
+- Old and modern photographs.
+- Individual portraits and group photographs.
+
+The inclusion of beetle insect images provides negative samples to evaluate whether the detector incorrectly identifies non-face objects as human faces.
+
+---
+
+# Overall Detection Performance
+
+The Haar Cascade face detector performed well on simple frontal-face images and successfully rejected the non-human images containing beetles.
+
+The detector successfully:
+
+- Detected all single-person frontal images.
+- Correctly identified images without human faces.
+- Successfully located most visible faces in group photographs.
+
+However, the performance decreased in more challenging scenarios, especially when:
+
+- Faces were small due to low image resolution.
+- Faces were partially rotated away from the camera.
+- Facial appearance differed from the patterns learned by the classifier.
+- Non-face regions contained patterns similar to facial structures.
+
+Overall, the detector achieved good results considering that Haar Cascade is a classical computer vision method and does not use deep learning-based feature extraction.
+
+---
+
+# Successful Detection Cases
+
+## Single Face Images
+
+The detector performed very well on individual portraits where the face was:
+
+- Large in the image.
+- Clearly visible.
+- Facing approximately toward the camera.
+- Not affected by heavy occlusion.
+
+For these images, the Haar Cascade classifier was able to accurately locate the face region.
+
+<div align="center">
+<img src="">
+</div>
+
+*Example: Successful detection on a single-face image.*
+
+---
+
+## Negative Samples
+
+The three beetle insect images were correctly classified as containing no faces.
+
+This demonstrates that the detector did not simply detect arbitrary objects and was able to distinguish between human facial patterns and unrelated objects.
+
+<div align="center">
+<img src="">
+</div>
+
+*Example: Negative samples where no faces were detected.*
+
+---
+
+# False Positive Detection
+
+In two images, the detector incorrectly identified parts of the person's collar as faces.
+
+<div align="center">
+<img src="">
+</div>
+
+*Example: False positive detection on clothing regions.*
+
+This behavior is a known limitation of Haar Cascade classifiers.
+
+The classifier does not understand the semantic meaning of a face. Instead, it searches for combinations of visual patterns similar to the Haar features learned during training.
+
+Certain regions of clothing can sometimes contain patterns that resemble facial structures, such as:
+
+- High-contrast edges.
+- Symmetrical shapes.
+- Dark and bright regions resembling eyes and mouth patterns.
+
+Because of this, the classifier may occasionally produce false detections in regions that visually resemble a face.
+
+---
+
+# Failure Cases
+
+## Missed Face in Group Image Due to Resolution
+
+In one group image, the detector failed to identify several faces.
+
+<div align="center">
+<img src="">
+</div>
+
+*Example: Missed detections caused by low image resolution.*
+
+The main reason for this failure is likely the limited resolution of the image.
+
+When the image was enlarged, the faces appeared pixelated, meaning that important facial details were lost. Haar Cascade relies heavily on local intensity patterns and edges, so when a face contains insufficient detail, the classifier may not find enough matching features.
+
+---
+
+## Missed Detection Due to Face Appearance Variation
+
+In another group image, one face was not detected despite having relatively high image quality.
+
+<div align="center">
+<img src="">
+</div>
+
+*Example: Missed detection despite good image quality.*
+
+Although the image quality was sufficient, the face appearance differed from the patterns expected by the Haar Cascade classifier.
+
+Possible factors include:
+
+- Slight changes in head orientation.
+- Different facial expressions.
+- Open mouth position.
+- Differences in facial features compared to the training samples.
+
+Since Haar Cascade mainly detects patterns associated with frontal faces, small deviations can reduce detection reliability.
+
+---
+
+## Missed Detection Due to Face Orientation
+
+In another image, George Harrison's face from the *Revolver* album cover was not detected.
+
+<div align="center">
+<img src="">
+</div>
+
+*Example: Missed detection caused by face orientation.*
+
+The likely reason is the face angle.
+
+The person is looking away from the camera, causing the facial structure to differ from the frontal-face patterns used by the classifier.
+
+Haar Cascade performs best on frontal faces and generally becomes less reliable for:
+
+- Side profiles.
+- Rotated faces.
+- Faces with significant changes in perspective.
+
+---
+
+## Missed Detection Despite Similar Appearance
+
+One group image failed to detect Ringo Starr's face even though he was looking toward the camera.
+
+<div align="center">
+<img src="">
+</div>
+
+*Example: Missed detection of a frontal face.*
+
+Initially, this failure appeared to be related to hair covering part of the face. However, similar cases existed where other faces with hair partially covering the face were detected successfully.
+
+This suggests that the failure was likely caused by a combination of factors rather than a single issue, such as:
+
+- Exact face position.
+- Local contrast patterns.
+- Facial expression.
+- Interaction between hair, shadows, and facial features.
+
+Haar Cascade classifiers can be sensitive to small variations in appearance, which may cause inconsistent results between visually similar cases.
+
+---
+
+# Detection Parameters
+
+The detector was configured using the following parameters:
+
+```python
+SCALE_FACTOR = 1.1
+MINIMUM_NEIGHBOURS = 3
+```
+The parameters were not modified during evaluation.
+
+The `scaleFactor` controls the image pyramid scaling process, determining how aggressively the detector searches at different image sizes.
+
+The `minNeighbors` parameter controls detection strictness:
+- Lower values allow more detections but may increase false positives.
+- Higher values reduce false positives but may miss some faces.
+The selected values provided a reasonable balance between detecting faces and avoiding excessive false detections.
+---
+# Processing Speed
+The batch detection process was completed in approximately less than two seconds for all 21 images.
+This demonstrates one of the main advantages of Haar Cascade classifiers:
+- Low computational cost.
+- Fast inference.
+- Suitable for real-time applications with limited hardware resources.
+---
+# Overall Conclusion
+The Haar Cascade face detector performed effectively for clear frontal-face images and demonstrated very fast processing speed.
+The results show that the algorithm is suitable for simple face detection tasks, especially when:
+- Faces are large and visible.
+- Images have good lighting.
+- Faces are approximately frontal.
+However, the experiments also demonstrate the limitations of classical feature-based detectors. Performance decreases when dealing with:
+- Low-resolution images.
+- Non-frontal faces.
+- Facial appearance variations.
+- Complex group photographs.
+Modern deep learning-based face detectors would likely provide higher robustness in these challenging scenarios, but Haar Cascade remains a lightweight and efficient solution for basic face detection applications.
 # Limitations
 Although Haar Cascade is fast and lightweight, it has several limitations:
 - It may struggle with faces that are not frontal.
