@@ -21,4 +21,4 @@ def get_request():
     return selected_image
 
 if __name__ == "__main__":
-    run(source_image=get_request())
+    run(source_image_path=get_request())
