@@ -21,6 +21,7 @@ def main():
                                                                                 # if pixel_value > threshold_value --> pixel_value := maximum_value (255)
                                                                                 # threshold is basically the threshold you set (150)
                                                                                 # thresh is the binarized image returned
+    cv.imshow("Binarized Image", thresh)
 
 
 
