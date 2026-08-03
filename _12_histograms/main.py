@@ -34,13 +34,13 @@ def main():
 
         # We can also use mask to compute the pixel density in a particular place in an image using the mask
     
-        blank = np.zeros(image.shape, dtype="uint8")
-        cv.circle(blank, (image.shape[1] // 2, image.shape[0] // 2), 75, 255, -1)
+        mask = np.zeros(grey_image.shape[:2], dtype="uint8")
+        cv.circle(mask, (grey_image[1] // 2, grey_image[0] // 2), 75, 255, -1)
 
-        masked_image = cv.bitwise_and(image, blank)
+        masked_image = cv.bitwise_and(grey_image, grey_image, mask=mask)
         cv.imshow("Masked Image", masked_image)
 
-        mask_histogram = cv.calcHist([grey_image], [0], None, [256], [0, 256], blank)
+        mask_histogram = cv.calcHist([grey_image], [0], mask ,None, [256], [0, 256])
     
         plt.figure()
         plt.title("Greyscal Masked Histogram")
