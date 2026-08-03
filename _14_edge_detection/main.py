@@ -10,7 +10,10 @@ def main():
 
 
     # Laplacian
-    
+    # Computes the Gradiants of the image passed to it
+    # Converting black to white and white to black are considered the negative and possitive slopes of the Gradiant and since images themselves can not contain negative pixels
+    # so we compute the absolute ( |pixel_value | ) of pixels values and convert them to uint8 
+
     lap = cv.Laplacian(grey_image, cv.CV_64F)
     lap = np.uint8(np.absolute(lap))
 
