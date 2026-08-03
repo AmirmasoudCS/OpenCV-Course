@@ -23,6 +23,15 @@ def main():
                                                                                 # threshold is basically the threshold you set (150)
                                                                                 # thresh is the binarized image returned
     cv.imshow("Binarized Image", thresh)
+
+    threshold_inv, thresh_inv = cv.threshold(grey_image, 150, 255, cv.THRESH_BINARY_INV)
+
+    cv.imshow("Inversed Binary Image", thresh_inv)
+
+
+
+
+
     cv.waitKey(0)
     cv.destroyAllWindows()
 
