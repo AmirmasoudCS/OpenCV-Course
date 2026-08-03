@@ -19,6 +19,9 @@ def main():
                                                                                 # It takes every pixel and compares it to threshold value:
                                                                                 # if pixel_value < threshold_value --> pixel_value := 0
                                                                                 # if pixel_value > threshold_value --> pixel_value := maximum_value (255)
+                                                                                # threshold is basically the threshold you set (150)
+                                                                                # thresh is the binarized image returned
+
 
 
 
