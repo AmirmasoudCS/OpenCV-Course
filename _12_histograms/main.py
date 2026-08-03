@@ -2,7 +2,7 @@
 
 import cv2 as cv
 import matplotlib.pyplot as plt
-
+import numpy as np
 
 def main():
 
@@ -23,6 +23,19 @@ def main():
     plt.xlim([0, 256])
     plt.show()
 
+    # We can also use mask to compute the pixel density in a particular place in an image using the mask
+
+    blank = np.zeros(image.shape[:2], dtype="uint8")
+    cv.circle(blank, (image.shape[1] // 2, image.shape[0] // 2), 75, 255, -1)
+
+    mask_histogram = cv.calcHist([grey_image], [0], None, [256], [0, 256], blank)
+
+    plt.figure()
+    plt.title("Greyscal Masked Histogram")
+    plt.xlabel("Bin")
+    plt.ylabel("# of Pixels")
+    plt.xlim([0, 256])
+    plt.show()
 
     cv.waitKey(0)
     cv.destroyAllWindows()
