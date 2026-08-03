@@ -3,7 +3,6 @@
 # while in Recognition not only you have to decide if an image contains a face or not, you also have to recognize whos face that is
 from _15_face_detection.pipeline import run
 from _15_face_detection.config.paths import IMAGES
-from _15_face_detection.config.registery import IMAGES_MAPPING
 
 def get_request():
 
@@ -19,7 +18,7 @@ def get_request():
 
     print(f"You have selected: {selected_image}")
 
-    return choice - 1
+    return selected_image
 
 if __name__ == "__main__":
-    run(source_image=IMAGES_MAPPING[get_request()])
+    run(source_image=get_request())
