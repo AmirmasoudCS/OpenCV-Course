@@ -8,9 +8,9 @@ from _15_face_detection.config.constants import (
     SCALE_FACTOR,
     MINIMUM_NEIGHBOURS
 )
+from pathlib import Path
 
-
-def run(source_image_path):
+def run(source_image_path: Path | None, all: bool = False):
 
     source_image = cv.imread(str(source_image_path))
 

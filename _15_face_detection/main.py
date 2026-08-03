@@ -12,13 +12,20 @@ def get_request():
     for i, image in enumerate(images, start=1):
         print(f"{i}. {image.name}")
 
+    print("\n0 . All")
+
     choice = int(input())
 
-    selected_image = images[choice - 1]
+    selected_image = None
+    all = True if choice == 0 else False
 
-    print(f"You have selected: {selected_image}")
+    if not all:
+        selected_image = images[choice - 1]
 
-    return selected_image
+        print(f"You have selected: {selected_image}")
+
+    return (selected_image, all)
 
 if __name__ == "__main__":
-    run(source_image_path=get_request())
+    path, all = get_request()
+    run(source_image_path=path, all=all)
