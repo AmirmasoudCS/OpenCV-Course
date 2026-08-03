@@ -8,15 +8,35 @@ A hands-on journey through OpenCV fundamentals — each session builds on the la
 
 ## 📚 Sessions
 
-### [Session 1 — Reading Images & Videos](./01_reading/README.md)
-The starting point of any computer vision pipeline: getting visual data into your program. Covers reading static images with `imread()` and streaming video frame-by-frame with `VideoCapture`, along with the core idea that an image is just a NumPy array underneath.
+### [Session 1 — Reading Images & Videos](./_01_reading/README.md)
 
-### [Session 2 — Rescaling & Resolution](./02_rescale/README.md)
-Tackles the practical problem of oversized media. Covers two distinct approaches — rescaling frames after capture vs. changing resolution at the source — plus the geometry of scale factors and defensive checks for invalid frames.
+### [Session 2 — Rescaling & Resolution](./_02_rescale/README.md)
 
-### [Session 3 — Drawing on Images](./03_draw/README.md)
-Shifts from reading images to creating them. Covers building a blank canvas from scratch and drawing on it two ways: direct array slicing vs. OpenCV's built-in shape functions (rectangles, circles, lines, text), along with OpenCV's BGR color convention.
+### [Session 3 — Drawing on Images](./_03_draw/README.md)
 
+### [Session 4 — Basic Functions in OpenCV](./_04_basics_README.md)
+
+### [Session 5 - Transformations](./_05_transformations/README.md)
+
+### [Session 6 - Contours](./_06_contours/README.md)
+
+### [Session 7 - Color Spaces](./_07_color_spaces/README.md)
+
+### [Session 8 - Color Channels](./_08_color_channels/README.md)
+
+### [Session 9 - Smoothing](./_09_smoothing/README.md)
+
+### [Session 10 - Bitwise Operations](./_10_bitwise_operations/README.md)
+
+### [Session 11 - Masking](./_11_masking/README.md)
+
+### [Session 12 - Histograms](./_12_histograms/README.md)
+
+### [Session 13 - Thresholding](./_13_thresholding/README.md)
+
+### [Session 14 - Edge Detection](./_14_edge_detection/README.md)
+
+### [Session 15 - Face Detection](./_15_face_detection/README.md)
 
 ## 🎯 Purpose
 
