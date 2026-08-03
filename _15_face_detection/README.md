@@ -1,6 +1,7 @@
 # Face Detection Pipeline Using OpenCV Haar Cascades
 
-![The Beatles](assets/outputs/tb1.jpg)
+|:-:|
+|![The Beatles](assets/outputs/tb1.jpg)|
 
 ## Overview
 
