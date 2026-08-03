@@ -40,8 +40,8 @@ def main():
                                                                                                                 # c is just a parameter letting us to fine-tune our thresholder
     cv.imshow("Adaptive Threshold", adaptive_thresh) 
 
-
-
+    # There are different methods of computing thresholds e.g. Gaussian, which adds wrights to pixels
+    # In order to find what is best we have to really hand tune the parameters and methods to get the best results
 
 
     cv.waitKey(0)
