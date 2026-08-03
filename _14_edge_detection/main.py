@@ -32,6 +32,9 @@ def main():
     cv.imshow("Combined Sobel", combined_sobel)
 
     # Canny
+    # Canny algorithm is a mulit-stage process which actually uses Sobel in one of its stages
+    # In more advanced purposes, you see Sobel used alot more than other two methods
+
 
     canny = cv.Canny(grey_image, 150, 175)
 
