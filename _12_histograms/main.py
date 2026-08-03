@@ -63,7 +63,7 @@ def main():
         colours = ('b', 'g', 'r')
 
         for i, col in enumerate(colours):
-            hist = cv.calcHist([image], [i], None, 256, [0, 256])
+            hist = cv.calcHist([image], [i], None, [256], [0, 256])
             plt.plot(hist)
             plt.xlim([0, 256])
             plt.ylim([0, 4000])
