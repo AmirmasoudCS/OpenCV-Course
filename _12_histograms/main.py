@@ -35,7 +35,7 @@ def main():
         # We can also use mask to compute the pixel density in a particular place in an image using the mask
     
         mask = np.zeros(grey_image.shape[:2], dtype="uint8")
-        cv.circle(mask, (grey_image[1] // 2, grey_image[0] // 2), 75, 255, -1)
+        cv.circle(mask, (grey_image.shape[1] // 2, grey_image.shape[0] // 2), 75, 255, -1)
 
         masked_image = cv.bitwise_and(grey_image, grey_image, mask=mask)
         cv.imshow("Masked Image", masked_image)
