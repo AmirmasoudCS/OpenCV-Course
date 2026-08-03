@@ -39,6 +39,7 @@ def main():
 
     cv.imshow("Rectangle NOT", rectangle_not)
     cv.imshow("Circle NOT", circle_not)
+    cv.imshow("NOT Circle ^ NOT Rectangle", cv.bitwise_and(rectangle_not, circle_not))
 
 
     cv.waitKey(0)
