@@ -27,5 +27,12 @@ def run(source_image_path):
 
     number_of_faces, drawn_image = print_cords(source_image, faces_rectangle)
 
-    print("Number of faces detected in the source image:", number_of_faces)
+    if number_of_faces == 0:
+        print("No faces were detected.")
+    else:
+        print("Number of faces detected in the source image:", number_of_faces)
+    
+
     cv.imshow("Detected Face", drawn_image)
+    cv.waitKey(0)
+    cv.destroyAllWindows()
