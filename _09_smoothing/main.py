@@ -39,7 +39,7 @@ def main():
     # This method applies blurring but you retain the edges as well
 
 
-    bilateral = cv.bilateralFilter(image, 5, 15, 15)    # This method does not use a kernel size, but instead it uses a diamtere parameter
+    bilateral = cv.bilateralFilter(image, 5, 25, 25)    # This method does not use a kernel size, but instead it uses a diamtere parameter
                                                         # a larger value of sigmaColor means that there are more colors in the neighbourhood that would be considered when the filter is applied
                                                         # a larger values for sigmaSpace means that the pixels from further away affect the blurring more
 
