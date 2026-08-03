@@ -27,6 +27,11 @@ def main():
     bitwise_or = cv.bitwise_or(rectangle, circle)
     cv.imshow("OR", bitwise_or)
 
+    # Bitwise XOR
+
+    bitwise_xor = cv.bitwise_xor(rectangle, circle)
+    cv.imshow("XOR", bitwise_xor)
+
 
     cv.waitKey(0)
     cv.destroyAllWindows()
