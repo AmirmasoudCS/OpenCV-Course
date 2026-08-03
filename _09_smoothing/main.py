@@ -9,6 +9,7 @@ import cv2 as cv
 def main():
 
     image = cv.imread("assets/Photos/boston_park.jpg")
+    cv.imshow("Original Image", image)
 
     # Averaging
     # In this method, the middle pixel is the average of pixel intensity of the surronding pixels of it
