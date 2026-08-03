@@ -16,7 +16,13 @@ def main():
 
     average = cv.blur(image, (3, 3))
     cv.imshow("Average Blur", average)
-    
+
+    # Gaussian
+    # Instead of computing the average, each surrounding pixel is given a particular wright and the weighted average gives the true result for the center
+    # In the Gaussian method the image tends to get less blur, but it is more natural
+
+    gaussian = cv.GaussianBlur(image, (3, 3), 0) # 0 is the standard deviation in the x-axis
+    cv.imshow("Gaussian Blur", gaussian) 
 
     cv.waitKey(0)
     cv.destroyAllWindows()
