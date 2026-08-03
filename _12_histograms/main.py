@@ -73,8 +73,10 @@ def main():
     elif choice == "4":
 
         mask = np.zeros(image.shape[:2], dtype="uint8")
+        cv.circle(mask, (image.shape[1] // 2, image.shape[0] // 2), 75, 255, -1)
 
         masked_image = cv.bitwise_and(image, image, mask=mask)
+        cv.imshow("Masked Coloured Image", masked_image)
 
         plt.figure()
         plt.title("Coloured Histogram")
@@ -85,13 +87,13 @@ def main():
 
         for i, col in enumerate(colours):
             hist = cv.calcHist([image], [i], mask, [256], [0, 256])
-            plt.figure(hist)
+            plt.plot(hist, color=col)
             plt.xlim([0, 256])
             plt.ylim([0, 4000])
 
         plt.show()
 
-        
+
     else:
         print("Wrong input!")
         return
