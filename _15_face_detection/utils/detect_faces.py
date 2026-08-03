@@ -3,7 +3,10 @@ from pathlib import Path
 
 from _15_face_detection.utils.greyscale import to_grey
 from _15_face_detection.utils.print_cords import print_cords
-
+from _15_face_detection.config.constants import (
+    SCALE_FACTOR,
+    MINIMUM_NEIGHBOURS
+)
 
 def detect_faces(image_path: Path, classifier):
     image = cv.imread(str(image_path))
@@ -15,8 +18,8 @@ def detect_faces(image_path: Path, classifier):
 
     faces_rectangle = classifier.detectMultiScale(
         grey_image,
-        scaleFactor=1.1,
-        minNeighbors=4
+        scaleFactor=SCALE_FACTOR,
+        minNeighbors=MINIMUM_NEIGHBOURS,
     )
 
     number_of_faces, drawn_image = print_cords(
