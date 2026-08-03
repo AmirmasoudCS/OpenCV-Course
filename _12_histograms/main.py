@@ -33,7 +33,7 @@ def main():
 
         # We can also use mask to compute the pixel density in a particular place in an image using the mask
     
-        blank = np.zeros(image.shape[:2], dtype="uint8")
+        blank = np.zeros(image.shape, dtype="uint8")
         cv.circle(blank, (image.shape[1] // 2, image.shape[0] // 2), 75, 255, -1)
 
         masked_image = cv.bitwise_and(image, blank)
@@ -46,6 +46,7 @@ def main():
         plt.xlabel("Bin")
         plt.ylabel("# of Pixels")
         plt.xlim([0, 256])
+        plt.ylim([0, 5000])
         plt.plot(mask_histogram)
         plt.show()
 
