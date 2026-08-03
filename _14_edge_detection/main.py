@@ -31,6 +31,12 @@ def main():
     cv.imshow("Sobel Y", sobely)
     cv.imshow("Combined Sobel", combined_sobel)
 
+    # Canny
+
+    canny = cv.Canny(grey_image, 150, 175)
+
+    cv.imshow("Canny Image", canny)
+
 
 
 
