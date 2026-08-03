@@ -22,6 +22,8 @@ def main():
                                                                                 # threshold is basically the threshold you set (150)
                                                                                 # thresh is the binarized image returned
     cv.imshow("Binarized Image", thresh)
+    cv.waitKey(0)
+    cv.destroyAllWindows()
 
 
 
