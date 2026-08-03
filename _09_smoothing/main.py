@@ -28,6 +28,7 @@ def main():
     # In this method, the middle pixel is the median of surrounding pixels
     # This method tends to reduce the noise more in an image comparing to previous methods
     # This method is mostly used in the advanced computer vision projects
+    # This method was not meant for high kernel sizes like 7 (or even 5)
 
     median = cv.medianBlur(image, 7) # The kernel size here is only an :int, but the OpenCV assumes itself that it is a tuple of [int, int]
     cv.imshow("Median Blur", median)
