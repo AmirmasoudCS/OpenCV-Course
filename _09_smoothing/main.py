@@ -14,14 +14,14 @@ def main():
     # Averaging
     # In this method, the middle pixel is the average of pixel intensity of the surronding pixels of it
 
-    average = cv.blur(image, (3, 3))
+    average = cv.blur(image, (7, 7))
     cv.imshow("Average Blur", average)
 
     # Gaussian
     # Instead of computing the average, each surrounding pixel is given a particular wright and the weighted average gives the true result for the center
     # In the Gaussian method the image tends to get less blur, but it is more natural
 
-    gaussian = cv.GaussianBlur(image, (3, 3), 0) # 0 is the standard deviation in the x-axis
+    gaussian = cv.GaussianBlur(image, (7, 7), 0) # 0 is the standard deviation in the x-axis
     cv.imshow("Gaussian Blur", gaussian) 
 
     # Median
@@ -29,7 +29,7 @@ def main():
     # This method tends to reduce the noise more in an image comparing to previous methods
     # This method is mostly used in the advanced computer vision projects
 
-    median = cv.medianBlur(image, 3) # The kernel size here is only an :int, but the OpenCV assumes itself that it is a tuple of [int, int]
+    median = cv.medianBlur(image, 7) # The kernel size here is only an :int, but the OpenCV assumes itself that it is a tuple of [int, int]
     cv.imshow("Median Blur", median)
 
     cv.waitKey(0)
