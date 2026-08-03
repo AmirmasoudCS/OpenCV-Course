@@ -1,6 +1,6 @@
 #   ____________
 #   |___|___|___|   These are the pixels of a place in the image when we have selected a kernel size of (3, 3)
-#   |___|___|___|   and what happens is that by the method of bluring that we have selected (e.g. Averaging), something
+#   |___|_X_|___|   and what happens is that by the method of bluring that we have selected (e.g. Averaging), something
 #   |___|___|___|   happens to the pixel in the middle, by the pixels around it (also called surrounding pixels)
 #   
 
