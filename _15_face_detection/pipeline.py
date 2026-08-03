@@ -10,7 +10,14 @@ from _15_face_detection.config.constants import (
 )
 
 
-def run(source_image):
+def run(source_image_path):
+
+    source_image = cv.imread(str(source_image_path))
+
+    if source_image is None:
+        raise FileNotFoundError(f"Could not load image: {source_image}")
+
+
 
     grey_image = to_grey(source=source_image)
 
