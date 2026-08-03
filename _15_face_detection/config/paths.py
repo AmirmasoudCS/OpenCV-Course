@@ -9,3 +9,4 @@ ASSETS = ROOT / "assets"
 
 IMAGES = ASSETS / "images"
 SOURCE = ASSETS / "source"
+OUTPUTS = ASSETS / "outputs"
