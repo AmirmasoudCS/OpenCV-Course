@@ -13,7 +13,7 @@ def main():
 
     blank = np.zeros(image.shape[:2], dtype="uint8") # The dimensions of the mask has to be of the dimensions of the image
 
-    mask = cv.circle(blank, (image.shape[1]//2, image.shape[0]//2), 100, 255, -1)
+    mask = cv.circle(blank, ((image.shape[1]//2)-30, ((image.shape[0]//2)//2)+15), 100, 255, -1)
 
     cv.imshow("Mask", mask)
 
