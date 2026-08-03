@@ -10,6 +10,7 @@ import cv2 as cv
 def main():
 
     image = cv.imread("assets/Photos/boston_park.jpg")
+    cv.imshow("Original Image", image)
 
     grey_image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
 
