@@ -11,7 +11,15 @@ def main():
 
     image = cv.imread("assets/Photos/boston_park.jpg")
 
-    
+    grey_image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
+
+    # Simple Thresholding
+
+    threshold, thresh = cv.threshold(grey_image, 150, 255, cv.THRESH_BINARY)    # (soruce_image, threshold, maximum_value, thresholding_method)
+                                                                                # It takes every pixel and compares it to threshold value:
+                                                                                # if pixel_value < threshold_value --> pixel_value := 0
+                                                                                # if pixel_value > threshold_value --> pixel_value := maximum_value (255)
+
 
 
 if __name__ == "__main__":
