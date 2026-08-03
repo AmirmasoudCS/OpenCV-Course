@@ -19,7 +19,7 @@ def get_request():
 
     print(f"You have selected: {selected_image}")
 
-    return selected_image
+    return choice - 1
 
 if __name__ == "__main__":
     run(source_image=IMAGES_MAPPING[get_request()])
