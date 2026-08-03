@@ -32,6 +32,14 @@ def main():
     bitwise_xor = cv.bitwise_xor(rectangle, circle)
     cv.imshow("XOR", bitwise_xor)
 
+    # Bitwise NOT
+
+    rectangle_not = cv.bitwise_not(rectangle)
+    circle_not = cv.bitwise_not(circle)
+
+    cv.imshow("Rectangle NOT", rectangle_not)
+    cv.imshow("Circle NOT", circle_not)
+
 
     cv.waitKey(0)
     cv.destroyAllWindows()
