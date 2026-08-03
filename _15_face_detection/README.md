@@ -6,6 +6,10 @@
 
 ## Overview
 
+<div align="center">
+    <img src="assets/graphical_abstract/face_detection_graphical_abstract.png">
+</div>
+
 A simple face detection pipeline built with OpenCV that detects human faces in images and draws bounding boxes around them.
 
 This project focuses on **face detection** (locating faces), not **face recognition** (identifying whose face it is).
