@@ -147,17 +147,15 @@ Large, clearly visible, front-facing portraits were detected reliably:
 
 <div align="center">
 <img src="assets/outputs/jl2.jpg">
-</div>
-
 *Successful detection on a single-face image.*
+</div>
 
 All beetle images were correctly identified as containing no faces, confirming the classifier isn't just flagging arbitrary objects:
 
 <div align="center">
 <img src="assets/outputs/b1.jpg">
-</div>
-
 *Negative sample — no faces detected.*
+</div>
 
 ### False Positives
 
@@ -165,9 +163,8 @@ In two images, the classifier mistook a collar for a face:
 
 <div align="center">
 <img src="assets/outputs/pm2.jpg">
-</div>
-
 *False positive on a clothing region.*
+</div>
 
 This happens because Haar Cascade matches visual patterns (contrast edges, symmetry, light/dark regions), not semantic understanding of "face" — clothing folds can occasionally mimic these patterns.
 
@@ -182,9 +179,8 @@ This happens because Haar Cascade matches visual patterns (contrast edges, symme
 
 <div align="center">
 <img src="assets/outputs/tb5.jpg">
-</div>
-
 *Missed detections due to low resolution.*
+</div>
 
 ---
 
