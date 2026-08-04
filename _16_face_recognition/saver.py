@@ -4,7 +4,7 @@ from _16_face_recognition.config.paths import RESULTS_TRAIN
 from _16_face_recognition.config.constants import PEOPLE
 
 def save(features, labels, people=PEOPLE):
-    os.makedirs(RESULTS_TRAIN, exist_ok=True)
+    RESULTS_TRAIN.mkdir(parents=True, exist_ok=True)
 
     counters = {person: 0 for person in people}
 
