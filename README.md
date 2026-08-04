@@ -8,13 +8,13 @@ A hands-on journey through OpenCV fundamentals — each session builds on the la
 
 ## 📚 Sessions
 
-### [Session 1 — Reading Images & Videos](./_01_reading/README.md)
+### [Session 1 - Reading Images & Videos](./_01_reading/README.md)
 
-### [Session 2 — Rescaling & Resolution](./_02_rescale/README.md)
+### [Session 2 - Rescaling & Resolution](./_02_rescale/README.md)
 
-### [Session 3 — Drawing on Images](./_03_draw/README.md)
+### [Session 3 - Drawing on Images](./_03_draw/README.md)
 
-### [Session 4 — Basic Functions in OpenCV](./_04_basics_README.md)
+### [Session 4 - Basic Functions in OpenCV](./_04_basics/README.md)
 
 ### [Session 5 - Transformations](./_05_transformations/README.md)
 
