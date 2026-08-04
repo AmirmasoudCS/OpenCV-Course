@@ -4,7 +4,7 @@
     <img src="assets/results/validate/Paul_McCartney/pm29.jpg"/>
 </div>
 
-## Overview
+## 🔍 Overview
 
 <div align="center">
     <img src="assets/graphical_abstract/face_recognition_graphical_abstract.png">
@@ -21,7 +21,7 @@ The system combines:
 
 ---
 
-## Task Description
+## 📋 Task Description
 
 The system:
 
@@ -39,7 +39,7 @@ The system:
 
 ---
 
-## Implementation Overview
+## 🛠️ Implementation Overview
 
 Built with **Python**, **OpenCV**, **NumPy**, and OpenCV's **LBPH Face Recognizer**.
 
@@ -55,7 +55,7 @@ Code is split into modules so each component has a single responsibility.
 
 ---
 
-## Recognition Algorithm Overview
+## ⚙️ Recognition Algorithm Overview
 
 ### 1. Face Detection
 
@@ -86,7 +86,7 @@ label, distance = face_recognizer.predict(face)
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```text
 📁 _16_face_recognition
@@ -113,7 +113,7 @@ label, distance = face_recognizer.predict(face)
 
 ---
 
-## Running the Project
+## ▶️ Running the Project
 
 ```bash
 cd _16_face_recognition
@@ -142,7 +142,7 @@ Annotated results are saved automatically.
 
 ---
 
-## Dataset
+## 🗂️ Dataset
 
 Images of all four members of **The Beatles** — George Harrison, John Lennon, Paul McCartney, and Ringo Starr.
 
@@ -150,7 +150,7 @@ Per person: **28 images total** → **20 for training**, **8 held out for valida
 
 ---
 
-## Validation Results
+## 📊 Validation Results
 
 ### Overall Performance
 
@@ -164,7 +164,7 @@ Evaluated on 4 people × 8 validation images = **32 total images**.
 | Ringo Starr | 1 | 8 | 12.5% |
 | **Overall** | **13** | **32** | **40.6%** |
 
-### Successful Recognitions
+### ✅ Successful Recognitions
 
 Recognition worked best when faces were frontal, lighting matched the training set, and facial features were clearly visible:
 
@@ -185,7 +185,7 @@ Recognition worked best when faces were frontal, lighting matched the training s
 </tr>
 </table>
 
-### Misclassification Patterns
+### ⚠️ Misclassification Patterns
 
 The main challenge was distinguishing between visually similar individuals:
 
@@ -200,7 +200,7 @@ Paul McCartney was the hardest case, most often misclassified as George Harrison
 
 ---
 
-## Interesting Failure Cases
+## ❌ Interesting Failure Cases
 
 **1. Unknown person classified as a known identity**
 
@@ -240,7 +240,7 @@ Since no face was detected, the recognition stage never executed for this image.
 
 ---
 
-## Limitations
+## 🚧 Limitations
 
 - Small training dataset
 - Sensitive to lighting and pose variation
@@ -249,7 +249,7 @@ Since no face was detected, the recognition stage never executed for this image.
 - Inherits false detections from the Haar Cascade stage
 - No true "unknown person" rejection mechanism
 
-## Future Improvements
+## 🚀 Future Improvements
 
 - Replace Haar Cascade with a deep learning-based face detector
 - Replace LBPH with modern face embeddings (FaceNet, ArcFace, DeepFace)
@@ -258,7 +258,7 @@ Since no face was detected, the recognition stage never executed for this image.
 - Apply face alignment before recognition
 - Benchmark classical methods against deep learning approaches
 
-## Conclusion
+## 🏁 Conclusion
 
 This project implements a complete classical face recognition pipeline using OpenCV. Haar Cascade and LBPH offer a lightweight, low-compute solution, but the results expose real limitations in real-world conditions — the system recognized several validation images correctly, but struggled with visually similar individuals, unseen faces, and occlusion.
 
