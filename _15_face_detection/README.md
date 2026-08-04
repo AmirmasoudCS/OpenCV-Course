@@ -152,7 +152,7 @@ Large, clearly visible, front-facing portraits were detected reliably:
 <div align="center">
 <img src="assets/outputs/jl2.jpg">
 </div>
-<figcaption align="center"><em>*Successful detection on a single-face image.*</em></figcaption>
+<p align="center">*Successful detection on a single-face image.*</p>
 
 All beetle images were correctly identified as containing no faces, confirming the classifier isn't just flagging arbitrary objects:
 
