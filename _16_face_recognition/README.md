@@ -263,7 +263,3 @@ Since no face was detected, the recognition stage never executed for this image.
 This project implements a complete classical face recognition pipeline using OpenCV. Haar Cascade and LBPH offer a lightweight, low-compute solution, but the results expose real limitations in real-world conditions — the system recognized several validation images correctly, but struggled with visually similar individuals, unseen faces, and occlusion.
 
 These gaps are exactly why modern face recognition systems have moved to deep learning-based feature extraction, which produces more robust identity representations across pose, lighting, and environment.
-
-## License
-
-[MIT LICENSE](LICENSE)
