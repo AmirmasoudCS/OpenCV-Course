@@ -160,6 +160,7 @@ All beetle images were correctly identified as containing no faces, confirming t
 <img src="assets/outputs/b1.jpg">
 *Negative sample — no faces detected.*
 </div>
+<p align="center"></p>
 
 ### False Positives
 
@@ -167,8 +168,8 @@ In two images, the classifier mistook a collar for a face:
 
 <div align="center">
 <img src="assets/outputs/pm2.jpg">
-*False positive on a clothing region.*
 </div>
+<p align="center">*False positive on a clothing region.*</p>
 
 This happens because Haar Cascade matches visual patterns (contrast edges, symmetry, light/dark regions), not semantic understanding of "face" — clothing folds can occasionally mimic these patterns.
 
@@ -183,8 +184,8 @@ This happens because Haar Cascade matches visual patterns (contrast edges, symme
 
 <div align="center">
 <img src="assets/outputs/tb5.jpg">
-*Missed detections due to low resolution.*
 </div>
+<p align="center">*Missed detections due to low resolution.*</p>
 
 ---
 
