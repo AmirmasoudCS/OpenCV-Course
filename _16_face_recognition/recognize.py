@@ -51,14 +51,36 @@ def main():
 
                 cv.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
+                height, width = img.shape[:2]
+
+                font_scale = max(0.5, height / 700)
+                thickness = max(1, int(height / 350))
+
+                text = f"{predicted_person} ({confidence:.1f})"
+                position = (x, max(30, y - 10))
+
+                # Outline
                 cv.putText(
                     img,
-                    f"{predicted_person} ({confidence:.2f})",
-                    (x, y - 10),
+                    text,
+                    position,
                     cv.FONT_HERSHEY_COMPLEX,
-                    0.8,
+                    font_scale,
+                    (0, 0, 0),
+                    thickness + 2,
+                    cv.LINE_AA,
+                )
+
+                # Foreground
+                cv.putText(
+                    img,
+                    text,
+                    position,
+                    cv.FONT_HERSHEY_COMPLEX,
+                    font_scale,
                     (0, 255, 0),
-                    2,
+                    thickness,
+                    cv.LINE_AA,
                 )
 
             cv.imwrite(str(output_dir / filename), img)
