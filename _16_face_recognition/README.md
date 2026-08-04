@@ -10,22 +10,14 @@
     <img src="assets/graphical_abstract/face_recognition_graphical_abstract.png">
 </div>
 
-A face recognition pipeline built with **OpenCV** that identifies known individuals from detected face regions.
+A face recognition pipeline built with OpenCV that identifies known individuals from detected face regions.
 
-This project extends the previous **Face Detection** pipeline by adding an identity recognition stage.
+This project extends the previous **Face Detection** pipeline by adding an identity recognition stage. Where face detection answers *"is there a face, and where?"*, face recognition answers *"whose face is this?"*
 
-While face detection answers:
+The system combines:
 
-> "Is there a face in this image, and where is it?"
-
-face recognition answers:
-
-> "Whose face is this?"
-
-The system uses:
-
-- **Haar Cascade Classifier** for face detection
-- **LBPH (Local Binary Patterns Histograms)** for face recognition
+- **Haar Cascade Classifier** — for face detection
+- **LBPH (Local Binary Patterns Histograms)** — for face recognition
 
 ---
 
@@ -33,63 +25,33 @@ The system uses:
 
 The system:
 
-1. Loads a dataset containing images of known individuals.
+1. Loads a dataset of known individuals.
 2. Detects faces using Haar Cascade.
-3. Crops detected face regions.
-4. Trains an LBPH face recognizer.
-5. Loads the trained recognition model.
-6. Processes validation images.
-7. Predicts the identity of each detected face.
-8. Saves annotated results with predicted labels.
+3. Crops the detected face regions.
+4. Trains an LBPH recognizer on the cropped faces.
+5. Runs the trained model on unseen validation images.
+6. Predicts an identity for each detected face.
+7. Saves annotated results with predicted labels.
 
-**Pipeline modes:**
-
-- **Training Mode** — detects faces from training images and creates an LBPH model.
-- **Validation Mode** — evaluates the trained model on unseen images and saves recognition results.
+**Modes:**
+- **Training Mode** — detects faces in training images and builds the LBPH model.
+- **Validation Mode** — evaluates the trained model on unseen images and saves labeled results.
 
 ---
 
 ## Implementation Overview
 
-Built with:
-
-- **Python**
-- **OpenCV**
-- **NumPy**
-- **LBPH Face Recognizer**
-- **Haar Cascade Face Detector**
-
-The pipeline is divided into separate modules:
+Built with **Python**, **OpenCV**, **NumPy**, and OpenCV's **LBPH Face Recognizer**.
 
 ```text
-Training Images
-       │
-       ▼
-Haar Cascade Detector
-       │
-       ▼
-Face Cropping
-       │
-       ▼
-LBPH Training
-       │
-       ▼
-face_trained.yaml
-       │
-       ▼
-Validation Images
-       │
-       ▼
-Haar Cascade Detector
-       │
-       ▼
-Face Recognition
-       │
-       ▼
-Annotated Output Images
+Training images → Haar Cascade → Face crop → LBPH training → face_trained.yaml
+                                                                      │
+Validation images → Haar Cascade → Face crop → LBPH prediction ──────┘
+                                                        │
+                                              Annotated output images
 ```
 
-Each component is separated into independent modules to keep responsibilities clear.
+Code is split into modules so each component has a single responsibility.
 
 ---
 
@@ -97,47 +59,30 @@ Each component is separated into independent modules to keep responsibilities cl
 
 ### 1. Face Detection
 
-The first stage uses the same Haar Cascade detector from the previous project.
-
-For each image:
+Same Haar Cascade detector as the face detection project:
 
 1. Load the image.
-2. Convert it to grayscale.
-3. Detect face regions using:
-
-```python
-detectMultiScale()
-```
-
-4. Extract detected face regions.
-
----
+2. Convert to grayscale.
+3. Detect face regions with `detectMultiScale()`.
+4. Extract the detected face regions.
 
 ### 2. Face Recognition Using LBPH
 
-The extracted face regions are passed to an OpenCV LBPH recognizer.
+The cropped face regions are passed to OpenCV's LBPH recognizer, which:
 
-LBPH works by:
-
-1. Comparing local binary patterns around each pixel.
-2. Creating histograms describing local texture information.
-3. Comparing the histogram of an unknown face with the trained examples.
-4. Returning the closest matching identity.
-
-The recognizer outputs:
+1. Compares local binary patterns around each pixel.
+2. Builds histograms describing local texture information.
+3. Compares the histogram of an unknown face against trained examples.
+4. Returns the closest matching identity.
 
 ```python
 label, distance = face_recognizer.predict(face)
 ```
 
-where:
+- `label` → predicted person
+- `distance` → similarity distance (lower = closer match)
 
-- `label` → predicted person index
-- `distance` → similarity distance
-
-Lower distance means a closer match.
-
-> Note: Despite OpenCV naming this value "confidence", it is actually a distance score. Higher values indicate worse matches.
+> Note: OpenCV calls this value "confidence," but it's actually a distance score — higher values mean a *worse* match, not a better one.
 
 ---
 
@@ -153,36 +98,30 @@ Lower distance means a closer match.
 │       ├── 📁 train
 │       └── 📁 validate
 ├── 📁 config
-│   ├── 🐍 constants.py
-│   ├── 📄 face_trained.yaml
-│   ├── 📄 features.npy
-│   ├── 📄 labels.npy
-│   └── 🐍 paths.py
-├── 🐍 loader.py
-├── 🐍 main.py
-├── 📘 README.md
-├── 🐍 recognize.py
-├── 🐍 saver.py
-└── 🐍 train.py
+│   ├── constants.py
+│   ├── face_trained.yaml
+│   ├── features.npy
+│   ├── labels.npy
+│   └── paths.py
+├── loader.py
+├── main.py
+├── recognize.py
+├── saver.py
+├── train.py
+└── README.md
 ```
 
 ---
 
 ## Running the Project
 
-Install dependencies:
-
 ```bash
+cd _16_face_recognition
 pip install -r face_recognition_requirements.txt
-```
-
-Run:
-
-```bash
 python main.py
 ```
 
-During execution, the user can choose whether to regenerate training data:
+You'll be asked whether to regenerate training data:
 
 ```text
 Overwrite the train results?
@@ -190,111 +129,34 @@ Overwrite the train results?
 (1) Yes
 ```
 
-Selecting:
+- **`1`** — detects faces in the training images, regenerates cropped face samples, and retrains the LBPH model.
+- **`0`** — reuses the existing cropped samples and previous training results.
 
-```text
-1
-```
-
-will:
-
-- detect faces from training images
-- regenerate cropped face samples
-- retrain the LBPH model
-
-Selecting:
-
-```text
-0
-```
-
-will:
-
-- load existing cropped face samples
-- reuse the previous training results
-
-Then to run recognition:
+Then run recognition on the validation set:
 
 ```bash
 python recognize.py
 ```
 
-and the results of recognition are saved.
+Annotated results are saved automatically.
 
 ---
 
-# Dataset
+## Dataset
 
-The dataset consists of images of all four members of **The Beatles**:
+Images of all four members of **The Beatles** — George Harrison, John Lennon, Paul McCartney, and Ringo Starr.
 
-- George Harrison
-- John Lennon
-- Paul McCartney
-- Ringo Starr
-
-Each person contains:
-
-- **28 total images**
-- **20 training images**
-- **8 validation images**
-
-The validation images are completely separated from the training set to evaluate generalization.
+Per person: **28 images total** → **20 for training**, **8 held out for validation** (fully separated to test generalization).
 
 ---
 
-# Training Configuration
+## Validation Results
 
-Training process:
+### Overall Performance
 
-```text
-20 images/person
+Evaluated on 4 people × 8 validation images = **32 total images**.
 
-        ↓
-
-Face detection
-
-        ↓
-
-Face crop extraction
-
-        ↓
-
-LBPH training
-
-        ↓
-
-face_trained.yaml
-```
-
-The trained model is saved and reused during validation.
-
----
-
-# Validation Results
-
-## Overall Performance
-
-The recognizer was evaluated on:
-
-```
-4 people × 8 validation images = 32 total images
-```
-
-The system correctly identified:
-
-```
-13 / 32 images
-```
-
-resulting in an overall accuracy of:
-
-```
-40.6%
-```
-
-Performance varied significantly between individuals:
-
-| Person | Correct Predictions | Total Images | Accuracy |
+| Person | Correct | Total | Accuracy |
 |---|---:|---:|---:|
 | George Harrison | 4 | 8 | 50.0% |
 | John Lennon | 5 | 8 | 62.5% |
@@ -302,179 +164,106 @@ Performance varied significantly between individuals:
 | Ringo Starr | 1 | 8 | 12.5% |
 | **Overall** | **13** | **32** | **40.6%** |
 
----
+### Successful Recognitions
 
-# Successful Recognitions
-
-The recognizer performed best when:
-
-- faces were frontal
-- lighting conditions were similar to training images
-- facial features were clearly visible
-
-Examples:
+Recognition worked best when faces were frontal, lighting matched the training set, and facial features were clearly visible:
 
 <table align="center">
 <tr>
-
 <td align="center">
-<img src="assets/results/validate/Ringo_Starr/rs22.jpg" width="250"><br>
-<sub><em>Correct recognition example</em></sub>
+<img src="assets/results/validate/Ringo_Starr/rs22.jpg" width="220"><br>
+<sub><em>Correct recognition — Ringo Starr</em></sub>
 </td>
-
 <td align="center">
-<img src="assets/results/validate/John_Lennon/jl9.jpg" width="250"><br>
-<sub><em>Correct recognition example</em></sub>
+<img src="assets/results/validate/John_Lennon/jl9.jpg" width="220"><br>
+<sub><em>Correct recognition — John Lennon</em></sub>
 </td>
-
 <td align="center">
-<img src="assets/results/validate/George_Harrison/gh9.jpg" width="250"><br>
-<sub><em>Correct recognition example</em></sub>
+<img src="assets/results/validate/George_Harrison/gh9.jpg" width="220"><br>
+<sub><em>Correct recognition — George Harrison</em></sub>
 </td>
-
 </tr>
 </table>
 
----
+### Misclassification Patterns
 
-# Misclassification Analysis
+The main challenge was distinguishing between visually similar individuals:
 
-The main challenge was distinguishing between visually similar individuals.
-
-Observed confusion patterns:
-
-| Actual Person | Predicted As |
+| Actual | Frequently Predicted As |
 |---|---|
 | George Harrison | John Lennon, Paul McCartney |
 | John Lennon | George Harrison, Ringo Starr |
 | Paul McCartney | George Harrison |
 | Ringo Starr | George Harrison |
 
-Paul McCartney was especially difficult for the model, frequently being classified as George Harrison.
-
-These errors occur because LBPH relies on local texture patterns rather than high-level facial representations. Similar hairstyles, facial hair, lighting, and image quality can produce similar feature patterns.
+Paul McCartney was the hardest case, most often misclassified as George Harrison. This tracks with how LBPH works: it compares local texture patterns rather than higher-level facial structure, so similar hairstyles, facial hair, lighting, and image quality can produce very similar feature signatures across different people.
 
 ---
 
-# Interesting Failure Cases
+## Interesting Failure Cases
 
-## 1. Unknown Person Classified as a Known Identity
+**1. Unknown person classified as a known identity**
 
-One interesting case occurred when images containing **Yoko Ono** were processed.
+Images containing Yoko Ono (not part of the training set) were classified as George Harrison:
 
-Although she was not included in the training dataset, the recognizer classified her as:
-
-```
-George Harrison
-```
-
-Example:
-
-<table>
-    <tr>
-        <td align="center">
-            <img src="assets/results/validate/John_Lennon/jl21.jpg" width="400">
-        </td>
-        <td align="center">
-            <img src="assets/results/validate/John_Lennon/jl28.jpg" width="400">
-        </td>
-    </tr>
+<table align="center">
+<tr>
+<td align="center"><img src="assets/results/validate/John_Lennon/jl21.jpg" width="320"></td>
+<td align="center"><img src="assets/results/validate/John_Lennon/jl28.jpg" width="320"></td>
+</tr>
 </table>
+<p align="center"><em>Unknown person incorrectly classified as George Harrison.</em></p>
 
-<em>Unknown person incorrectly classified as George Harrison.</em>
+LBPH is a **closed-set classifier** — it assumes every detected face belongs to one of the known classes and always returns its closest match, rather than an "unknown" label.
 
-This happens because LBPH is a **closed-set classifier**.
+**2. A bad detection still gets "recognized"**
 
-It assumes that every detected face belongs to one of the known classes.
-
-Therefore, instead of returning:
-
-```
-Unknown
-```
-
-it returns the closest available match.
-
----
-
-## 2. False Face Detection Propagating Into Recognition
-
-The recognition pipeline depends on the accuracy of the Haar Cascade detector.
-
-If the detector incorrectly identifies a non-face region, LBPH will still attempt recognition.
-
-Example:
+Recognition accuracy is bottlenecked by detection accuracy. If Haar Cascade flags a non-face region, LBPH will still try to classify it:
 
 <div align="center">
-<img src="assets/results/validate/George_Harrison/gh18.jpg" width="400">
+<img src="assets/results/validate/George_Harrison/gh18.jpg" width="320">
 </div>
+<p align="center"><em>A non-face region incorrectly detected and classified.</em></p>
 
-<em>A non-face region incorrectly detected and classified.</em>
+This likely traces back to training: a few cropped "face" samples were actually clothing or jewelry regions, so the model learned to associate those textures with a person. Since LBPH has no concept of what a face actually is, it can't reject detections like this.
 
-Since LBPH has no understanding of what a face is, it cannot reject these detections.
+**3. Occlusion causes detection — and recognition — to fail entirely**
 
-> I guess this is happened because in training face, there were parts of clothings and jewelry cropped as the faces and thus the model trained on them thinks they are an actual person!
-
----
-
-## 3. Occlusion and Face Detection Failure
-
-In one Ringo Starr validation image, the detector failed to locate the face.
-
-Possible causes:
-
-- smoke partially covering the face
-- mouth position changing facial appearance
-- reduced visibility of important facial regions
-
-Example:
+In one Ringo Starr validation image, Haar Cascade failed to detect a face at all, likely due to smoke partially covering the face, a mouth position that altered the facial pattern, or reduced visibility of key facial regions:
 
 <div align="center">
-<img src="assets/results/validate/Ringo_Starr/rs16.jpg" width="400">
+<img src="assets/results/validate/Ringo_Starr/rs16.jpg" width="320">
 </div>
+<p align="center"><em>Face detection failure due to partial occlusion — recognition never runs.</em></p>
 
-<em>Face detection failure due to partial occlusion.</em>
-
-Because no face was detected, the recognition stage was never executed.
+Since no face was detected, the recognition stage never executed for this image.
 
 ---
 
-# Limitations
-
-The current pipeline has several limitations:
+## Limitations
 
 - Small training dataset
-- Sensitive to lighting changes
-- Sensitive to pose variations
-- Cannot reliably recognize unseen individuals
-- LBPH depends heavily on image texture
-- False detections from Haar Cascade affect recognition accuracy
+- Sensitive to lighting and pose variation
+- Cannot reliably handle unseen individuals
+- Relies heavily on raw image texture rather than facial structure
+- Inherits false detections from the Haar Cascade stage
 - No true "unknown person" rejection mechanism
 
----
+## Future Improvements
 
-# Future Improvements
-
-Possible improvements:
-
-- Replace Haar Cascade with a deep learning face detector
-- Replace LBPH with modern face embeddings:
-  - FaceNet
-  - ArcFace
-  - DeepFace
-- Add unknown-person detection using distance thresholds
-- Increase training dataset size
+- Replace Haar Cascade with a deep learning-based face detector
+- Replace LBPH with modern face embeddings (FaceNet, ArcFace, DeepFace)
+- Add unknown-person rejection using a distance threshold
+- Grow the training dataset
 - Apply face alignment before recognition
 - Benchmark classical methods against deep learning approaches
 
----
+## Conclusion
 
-# Conclusion
+This project implements a complete classical face recognition pipeline using OpenCV. Haar Cascade and LBPH offer a lightweight, low-compute solution, but the results expose real limitations in real-world conditions — the system recognized several validation images correctly, but struggled with visually similar individuals, unseen faces, and occlusion.
 
-This project demonstrates a complete classical computer vision face recognition pipeline using OpenCV.
+These gaps are exactly why modern face recognition systems have moved to deep learning-based feature extraction, which produces more robust identity representations across pose, lighting, and environment.
 
-While Haar Cascade and LBPH provide a lightweight solution with minimal computational requirements, the results show their limitations when handling real-world variations.
+## License
 
-The system successfully recognized several validation images but struggled with visually similar individuals, unknown faces, and occlusions.
-
-These limitations highlight why modern face recognition systems rely on deep learning-based feature extraction methods, which provide more robust identity representations across different poses, lighting conditions, and environments.
+[MIT LICENSE](LICENSE)
