@@ -223,7 +223,7 @@ A quick overview of every miss, with the likely cause:
 <table align="center">
   <tr>
     <td align="center">
-      <img src="assets/outputs/tb5.jpg" width="320"><br>
+      <img src="assets/outputs/tb5.jpg" width="300"><br>
       <sub><em>Low resolution - faces too pixelated to match Haar features</em></sub>
     </td>
     <td align="center">
@@ -237,7 +237,7 @@ A quick overview of every miss, with the likely cause:
       <sub><em>Face orientation - profile view from the Revolver album cover</em></sub>
     </td>
     <td align="center">
-      <img src="assets/outputs/tb4.jpg" width="370"><br>
+      <img src="assets/outputs/tb4.jpg" width="390"><br>
       <sub><em>Unclear cause - frontal face missed despite similar cases succeeding</em></sub>
     </td>
   </tr>
