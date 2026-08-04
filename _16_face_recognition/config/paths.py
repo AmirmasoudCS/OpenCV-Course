@@ -9,6 +9,7 @@ VALIDATE = IMAGES / "validate"
 RESULTS = ASSETS / "results"
 RESULTS_TRAIN = RESULTS / "train"
 RESULTS_VALIDATE = RESULTS / "validate"
+CONFIG = ROOT / 'config'
 
 GEORGE_HARRISON_TRAIN = TRAIN / "George_Harrison"
 JOHN_LENNON_TRAIN = TRAIN / "John_Lennon"
