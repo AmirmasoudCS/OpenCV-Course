@@ -4,7 +4,7 @@
     <img src="assets/outputs/tb1.jpg" alt="The Beatles" />
 </div>
 
-## Overview
+## 🔍 Overview
 
 <div align="center">
     <img src="assets/graphical_abstract/face_detection_graphical_abstract.png">
@@ -16,7 +16,7 @@ This project focuses on **face detection** (locating faces), not **face recognit
 
 ---
 
-## Task Description
+## 📋 Task Description
 
 The system:
 
@@ -32,7 +32,7 @@ The system:
 
 ---
 
-## Implementation Overview
+## 🛠️ Implementation Overview
 
 Built with **Python**, **OpenCV**, and a **Haar Cascade Classifier**.
 
@@ -48,7 +48,7 @@ Code is split into modules so each component has a single responsibility.
 
 ---
 
-## Algorithm Overview
+## ⚙️ Algorithm Overview
 
 The classifier uses **Haar-like features**, **integral images**, **AdaBoost**, and a **cascade of classifiers**, trained on positive (face) and negative (non-face) samples.
 
@@ -64,7 +64,7 @@ The classifier uses **Haar-like features**, **integral images**, **AdaBoost**, a
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```text
 📁 _15_face_detection
@@ -89,7 +89,7 @@ The classifier uses **Haar-like features**, **integral images**, **AdaBoost**, a
 
 ---
 
-## Running the Project
+## ▶️ Running the Project
 
 ```bash
 cd _15_face_detection
@@ -114,7 +114,7 @@ What file do you want to perform Face Detection on?
 
 ---
 
-## Dataset
+## 🗂️ Dataset
 
 21 images total:
 
@@ -132,7 +132,7 @@ MINIMUM_NEIGHBOURS = 3
 
 ---
 
-## Results
+## 📊 Results
 
 ### Overall Performance
 
@@ -145,7 +145,7 @@ The detector handled simple frontal faces well and correctly rejected all beetle
 
 Batch processing all 21 images took **under 2 seconds**, highlighting Haar Cascade's low computational cost and suitability for real-time or low-resource use cases.
 
-### Successful Detections
+### ✅ Successful Detections
 
 Large, clearly visible, front-facing portraits were detected reliably across every member:
 
@@ -198,7 +198,7 @@ All beetle images were correctly identified as containing no faces, confirming t
   </tr>
 </table>
 
-### False Positives
+### ⚠️ False Positives
 
 In two images, the classifier mistook a collar for a face:
 <table align="center">
@@ -216,7 +216,7 @@ In two images, the classifier mistook a collar for a face:
 
 This happens because Haar Cascade matches visual patterns (contrast edges, symmetry, light/dark regions), not semantic understanding of "face" — clothing folds can occasionally mimic these patterns.
 
-### Failure Cases
+### ❌ Failure Cases
 
 A quick overview of every miss, with the likely cause:
 
@@ -252,18 +252,18 @@ A quick overview of every miss, with the likely cause:
 
 ---
 
-## Conclusion
+## 🏁 Conclusion
 
 Haar Cascade performs well on clear, frontal, well-lit faces and is extremely fast — making it a solid lightweight option for basic detection tasks. It's less reliable on low-resolution images, non-frontal faces, and appearance variation, where modern deep learning-based detectors would likely do better.
 
-## Limitations
+## 🚧 Limitations
 
 - Struggles with non-frontal faces
 - Sensitive to lighting conditions
 - Prone to occasional false positives
 - Less robust than deep learning-based detectors
 
-## Future Improvements
+## 🚀 Future Improvements
 
 - Swap in a deep learning-based face detector
 - Add confidence scores to detections
