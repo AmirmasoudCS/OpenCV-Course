@@ -5,7 +5,6 @@ import numpy as np
 from _16_face_recognition.config.constants import PEOPLE
 from  _16_face_recognition.config.paths import TRAIN
 from _15_face_detection.utils.xml_loader import load_xml
-from _15_face_detection.utils.detect_faces import detect_faces
 from _15_face_detection.utils.greyscale import to_grey
 from _15_face_detection.config.paths import SOURCE
 from _15_face_detection.config.constants import SCALE_FACTOR, MINIMUM_NEIGHBOURS
