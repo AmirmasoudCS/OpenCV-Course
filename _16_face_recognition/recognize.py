@@ -1,8 +1,16 @@
-import numpy as np
+import os
 import cv2 as cv
+
 from _15_face_detection.utils.xml_loader import load_xml
+from _15_face_detection.utils.greyscale import to_grey
 from _15_face_detection.config.paths import SOURCE
-from _16_face_recognition.config.paths import CONFIG
+from _15_face_detection.config.constants import SCALE_FACTOR, MINIMUM_NEIGHBOURS
+
+from _16_face_recognition.config.paths import (
+    CONFIG,
+    VALIDATE,
+    RESULTS_VALIDATE,
+)
 from _16_face_recognition.config.constants import PEOPLE
 
 
@@ -10,12 +18,50 @@ def main():
 
     classifier = load_xml(SOURCE / "haar_face.xml")
 
-    features = np.load(CONFIG / "features.npy")
-    labels = np.load(CONFIG / "labels.npy")
+    face_recognizer = cv.face.LBPHFaceRecognizer_create()
+    face_recognizer.read(str(CONFIG / "face_trained.yaml"))
 
-    face_recognizer = cv.face.LBPHFaceRecognizer_creat()
+    for person in PEOPLE:
 
-    face_recognizer.read(CONFIG / "face_trained.yaml")
+        input_dir = VALIDATE / person
+        output_dir = RESULTS_VALIDATE / person
+
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+        for filename in os.listdir(input_dir):
+
+            img_path = input_dir / filename
+
+            img = cv.imread(str(img_path))
+            grey = to_grey(img)
+
+            faces_rect = classifier.detectMultiScale(
+                grey,
+                scaleFactor=SCALE_FACTOR,
+                minNeighbors=MINIMUM_NEIGHBOURS,
+            )
+
+            for (x, y, w, h) in faces_rect:
+
+                face_roi = grey[y:y+h, x:x+w]
+
+                label, confidence = face_recognizer.predict(face_roi)
+
+                predicted_person = PEOPLE[label]
+
+                cv.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
+
+                cv.putText(
+                    img,
+                    f"{predicted_person} ({confidence:.2f})",
+                    (x, y - 10),
+                    cv.FONT_HERSHEY_COMPLEX,
+                    0.8,
+                    (0, 255, 0),
+                    2,
+                )
+
+            cv.imwrite(str(output_dir / filename), img)
 
 
 if __name__ == "__main__":
