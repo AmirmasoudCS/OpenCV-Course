@@ -205,7 +205,3 @@ Haar Cascade performs well on clear, frontal, well-lit faces and is extremely fa
 - Add confidence scores to detections
 - Support video/webcam input
 - Benchmark classical vs. deep learning approaches
-
-## License
-
-[MIT LICENSE](LICENSE)
