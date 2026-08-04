@@ -2,8 +2,8 @@ import os
 import cv2 as cv
 import numpy as np
 
-from config.constants import PEOPLE
-from config.paths import TRAIN
+from _16_face_recognition.config.constants import PEOPLE
+from  _16_face_recognition.config.paths import TRAIN
 from _15_face_detection.utils.xml_loader import load_xml
 from _15_face_detection.utils.detect_faces import detect_faces
 from _15_face_detection.utils.greyscale import to_grey
