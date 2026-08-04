@@ -7,7 +7,6 @@ from  _16_face_recognition.config.paths import TRAIN
 from _15_face_detection.utils.xml_loader import load_xml
 from _15_face_detection.utils.greyscale import to_grey
 from _15_face_detection.config.paths import SOURCE
-from _15_face_detection.config.constants import SCALE_FACTOR, MINIMUM_NEIGHBOURS
 
 def create_train():
 
@@ -26,7 +25,7 @@ def create_train():
             grey = to_grey(img_array)
             classifier = load_xml(SOURCE / "haar_face.xml")
 
-            faces_rect = classifier.detectMultiScale(grey, scaleFactor=SCALE_FACTOR, minNeighbors=MINIMUM_NEIGHBOURS)
+            faces_rect = classifier.detectMultiScale(grey, scaleFactor=1.1, minNeighbors=4)
 
             for (x, y, w, h) in faces_rect:
                 faces_roi = grey[y:y+h, x:x+w]
