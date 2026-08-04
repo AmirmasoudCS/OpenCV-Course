@@ -221,7 +221,7 @@ LBPH is a **closed-set classifier** — it assumes every detected face belongs t
 Recognition accuracy is bottlenecked by detection accuracy. If Haar Cascade flags a non-face region, LBPH will still try to classify it:
 
 <div align="center">
-<img src="assets/results/validate/George_Harrison/gh18.jpg" width="320">
+<img src="assets/results/validate/George_Harrison/gh18.jpg" width="420">
 </div>
 <p align="center"><em>A non-face region incorrectly detected and classified.</em></p>
 
