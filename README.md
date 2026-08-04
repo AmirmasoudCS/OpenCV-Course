@@ -1,6 +1,6 @@
 # OpenCV Course
 
-A hands-on journey through OpenCV fundamentals — each session builds on the last, moving from reading raw visual data to manipulating and creating it from scratch. Every session directory contains the session's code along with a dedicated README covering not just *what* the code does, but the underlying philosophy behind it.
+A hands-on journey through OpenCV fundamentals —  Every session directory contains the session's code along with a dedicated README covering not just *what* the code does, but the underlying philosophy behind it.
 
 ## Mini-Projects
 
