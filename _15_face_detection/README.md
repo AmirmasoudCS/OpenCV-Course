@@ -170,10 +170,12 @@ Large, clearly visible, front-facing portraits were detected reliably across eve
   </tr>
 </table>
 
+
 Group photos with clear, frontal faces were also detected correctly:
 
+
 <div align="center">
-    <img src="assets/outputs/tb2.jpg" width="500">
+    <img src="assets/outputs/tb2.jpg" width="400">
 </div>
 <p align="center"><em>All faces correctly detected in a group photo.</em></p>
 
@@ -183,15 +185,15 @@ All beetle images were correctly identified as containing no faces, confirming t
   <tr>
     <td align="center">
       <img src="assets/outputs/b1.jpg" width="200"><br>
-      <sub><em>Negative sample 1 — no faces detected</em></sub>
+      <sub><em>Negative sample 1 - no faces detected</em></sub>
     </td>
     <td align="center">
       <img src="assets/outputs/b2.jpg" width="200"><br>
-      <sub><em>Negative sample 2 — no faces detected</em></sub>
+      <sub><em>Negative sample 2 - no faces detected</em></sub>
     </td>
     <td align="center">
       <img src="assets/outputs/b3.jpg" width="200"><br>
-      <sub><em>Negative sample 3 — no faces detected</em></sub>
+      <sub><em>Negative sample 3 - no faces detected</em></sub>
     </td>
   </tr>
 </table>
@@ -202,11 +204,11 @@ In two images, the classifier mistook a collar for a face:
 <table>
     <tr>
         <td align="center">
-            <img src="assets/outputs/pm2.jpg" width="400">
+            <img src="assets/outputs/pm2.jpg" width="350"><br>
             <sub><em>False positive on a clothing region of PaulMcCartney.</em></sub>
         </td>
         <td align="center">
-            <img src="assets/outputs/gh1.jpg" width="400">
+            <img src="assets/outputs/gh1.jpg" width="350"><br>
             <sub><em>False positive on a clothing region of George Harrison.</em></sub>
         </td>
     </tr>
