@@ -5,6 +5,7 @@ A hands-on journey through OpenCV fundamentals —  Every session directory cont
 ## Mini-Projects
 
 * [Face Detection](./_15_face_detection/README.md)
+* [Face Recognition](./_16_face_recognition/README.md)
 
 ## 📚 Sessions
 
@@ -37,6 +38,8 @@ A hands-on journey through OpenCV fundamentals —  Every session directory cont
 ### [Session 14 - Edge Detection](./_14_edge_detection/README.md)
 
 ### [Session 15 - Face Detection](./_15_face_detection/README.md)
+
+### [Session 16 - Face Recognition](./_16_face_recognition/README.md)
 
 ## 🎯 Purpose
 
