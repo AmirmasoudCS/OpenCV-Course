@@ -238,7 +238,7 @@ A quick overview of every miss, with the likely cause:
     </td>
     <td align="center">
       <img src="assets/outputs/tb4.jpg" width="390"><br>
-      <sub><em>Unclear cause - frontal face missed despite similar cases succeeding</em></sub>
+      <sub><em>Missed detection — Mix of slight head tilt, lower face/background contrast, and hair partially shadowing the eye region</em></sub>
     </td>
   </tr>
 </table>
@@ -248,7 +248,7 @@ A quick overview of every miss, with the likely cause:
 | Missed faces in a low-res group photo | Faces became pixelated at scale, losing the detail Haar features depend on |
 | Missed a clear, high-quality face | Slight orientation/expression differences from training patterns |
 | Missed a profile face (Revolver album cover) | Haar Cascade is tuned for frontal faces; side angles reduce reliability |
-| Missed a frontal face despite similar cases being detected | Likely a combination of factors (exact position, contrast, hair/shadow interaction) rather than one clear cause |
+| Missed detection despite similar case was detected | Likely a mix of slight head tilt, lower face/background contrast, and hair partially shadowing the eye region |
 
 ---
 
