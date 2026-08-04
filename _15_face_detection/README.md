@@ -158,9 +158,8 @@ All beetle images were correctly identified as containing no faces, confirming t
 
 <div align="center">
 <img src="assets/outputs/b1.jpg">
-*Negative sample — no faces detected.*
 </div>
-<p align="center"></p>
+<p align="center">*Negative sample - no faces detected.*</p>
 
 ### False Positives
 
