@@ -153,19 +153,19 @@ Large, clearly visible, front-facing portraits were detected reliably across eve
   <tr>
     <td align="center">
       <img src="assets/outputs/gh3.jpg" width="200"><br>
-      <sub><em>George Harrison — solo portrait</em></sub>
+      <sub><em>George Harrison</em></sub>
     </td>
     <td align="center">
       <img src="assets/outputs/jl1.jpg" width="200"><br>
-      <sub><em>John Lennon — solo portrait</em></sub>
+      <sub><em>John Lennon</em></sub>
     </td>
     <td align="center">
       <img src="assets/outputs/pm1.jpg" width="200"><br>
-      <sub><em>Paul McCartney — solo portrait</em></sub>
+      <sub><em>Paul McCartney</em></sub>
     </td>
     <td align="center">
       <img src="assets/outputs/rs3.jpg" width="200"><br>
-      <sub><em>Ringo Starr — solo portrait</em></sub>
+      <sub><em>Ringo Starr</em></sub>
     </td>
   </tr>
 </table>
