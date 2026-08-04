@@ -6,6 +6,7 @@ ASSETS = ROOT / "assets"
 IMAGES = ASSETS / "images"
 TRAIN = IMAGES / "train"
 VALIDATE = IMAGES / "validate"
+RESULTS = ASSETS / "results"
 
 GEORGE_HARRISON_TRAIN = TRAIN / "George_Harrison"
 JOHN_LENNON_TRAIN = TRAIN / "John_Lennon"
