@@ -7,11 +7,11 @@ import numpy as np
 
 def main():
 
-    choice = int(input("What do you want to do?\n(1) Train\n(2) Validate\n"))
+    choice = int(input("What do you want to do?\n(1) Train    (2) Validate\n"))
 
     if choice == 1:
 
-        overwrite: bool = int(input("Overwrite the train results?\n(0) No    (1) Yes\n"))
+        overwrite: bool = int(input("Overwrite the cropped results?\n(0) No    (1) Yes\n"))
 
         if overwrite:
             features, labels = create_train()
