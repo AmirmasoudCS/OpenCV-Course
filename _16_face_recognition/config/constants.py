@@ -1,2 +1,2 @@
 
-PEOPLE = ["George_Harrison", "Jhon_Lennon", "Paul_McCarteny", "Ringo_Starr"] 
+PEOPLE = ["George_Harrison", "John_Lennon", "Paul_McCarteny", "Ringo_Starr"] 

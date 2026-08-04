@@ -8,7 +8,7 @@ TRAIN = IMAGES / "train"
 VALIDATE = IMAGES / "validate"
 
 GEORGE_HARRISON_TRAIN = TRAIN / "George_Harrison"
-JOHN_LENNON_TRAIN = TRAIN / "Jhon_Lennon"
+JOHN_LENNON_TRAIN = TRAIN / "John_Lennon"
 PAUL_MCCARTENY_TRAIN = TRAIN / "Paul_McCarteny"
 RINGO_STARR_TRAIN = TRAIN / "Ringo_Starr"
 
