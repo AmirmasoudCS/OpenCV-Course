@@ -1,6 +1,7 @@
 from _16_face_recognition.train import create_train
 from _16_face_recognition.saver import save
 from _16_face_recognition.loader import load_train
+from _16_face_recognition.config.paths import CONFIG
 import cv2 as cv
 import numpy as np
 
@@ -29,9 +30,9 @@ def main():
 
         face_recognizer.train(features, labels)
 
-        face_recognizer.save("config/face_trained.yaml")
-        np.save("config/features.npy", features)
-        np.save("config/labels.npy", labels)
+        face_recognizer.save(CONFIG / "face_trained.yaml")
+        np.save(CONFIG / "features.npy", features)
+        np.save(CONFIG / "labels.npy", labels)
 
     elif choice == 2:
         pass
