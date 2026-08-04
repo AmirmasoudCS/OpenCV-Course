@@ -11,6 +11,8 @@ def main():
 
     else:
         features, labels = load_train()
+
+    print(len(features), labels)
         
 
 if __name__ == "__main__":

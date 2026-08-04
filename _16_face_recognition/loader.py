@@ -23,7 +23,7 @@ def load_train():
         parts = name.split("_")
 
         # FirstName_LastName_Number
-        person = f"{parts[0]} {parts[1]}"
+        person = f"{parts[0]}_{parts[1]}"
 
         label = PEOPLE.index(person)
 
