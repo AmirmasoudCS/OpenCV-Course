@@ -3,6 +3,7 @@ from _16_face_recognition.saver import save
 
 def main():
     features, labels = create_train()
+    save(features, labels)
 
 if __name__ == "__main__":
     main()
