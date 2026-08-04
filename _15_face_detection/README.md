@@ -147,32 +147,99 @@ Batch processing all 21 images took **under 2 seconds**, highlighting Haar Casca
 
 ### Successful Detections
 
-Large, clearly visible, front-facing portraits were detected reliably:
+Large, clearly visible, front-facing portraits were detected reliably across every member:
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="assets/outputs/gh3.jpg" width="200"><br>
+      <sub><em>George Harrison — solo portrait</em></sub>
+    </td>
+    <td align="center">
+      <img src="assets/outputs/jl1.jpg" width="200"><br>
+      <sub><em>John Lennon — solo portrait</em></sub>
+    </td>
+    <td align="center">
+      <img src="assets/outputs/pm1.jpg" width="200"><br>
+      <sub><em>Paul McCartney — solo portrait</em></sub>
+    </td>
+    <td align="center">
+      <img src="assets/outputs/rs3.jpg" width="200"><br>
+      <sub><em>Ringo Starr — solo portrait</em></sub>
+    </td>
+  </tr>
+</table>
+
+Group photos with clear, frontal faces were also detected correctly:
 
 <div align="center">
-<img src="assets/outputs/jl2.jpg">
+    <img src="assets/outputs/tb2.jpg" width="500">
 </div>
-<p align="center">*Successful detection on a single-face image.*</p>
+<p align="center"><em>All faces correctly detected in a group photo.</em></p>
 
 All beetle images were correctly identified as containing no faces, confirming the classifier isn't just flagging arbitrary objects:
 
-<div align="center">
-<img src="assets/outputs/b1.jpg">
-</div>
-<p align="center">*Negative sample - no faces detected.*</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="assets/outputs/b1.jpg" width="200"><br>
+      <sub><em>Negative sample 1 — no faces detected</em></sub>
+    </td>
+    <td align="center">
+      <img src="assets/outputs/b2.jpg" width="200"><br>
+      <sub><em>Negative sample 2 — no faces detected</em></sub>
+    </td>
+    <td align="center">
+      <img src="assets/outputs/b3.jpg" width="200"><br>
+      <sub><em>Negative sample 3 — no faces detected</em></sub>
+    </td>
+  </tr>
+</table>
 
 ### False Positives
 
 In two images, the classifier mistook a collar for a face:
-
-<div align="center">
-<img src="assets/outputs/pm2.jpg">
-</div>
-<p align="center">*False positive on a clothing region.*</p>
+<table>
+    <tr>
+        <td align="center">
+            <img src="assets/outputs/pm2.jpg" width="400">
+            <sub><em>False positive on a clothing region of PaulMcCartney.</em></sub>
+        </td>
+        <td align="center">
+            <img src="assets/outputs/gh1.jpg" width="400">
+            <sub><em>False positive on a clothing region of George Harrison.</em></sub>
+        </td>
+    </tr>
+</table>
 
 This happens because Haar Cascade matches visual patterns (contrast edges, symmetry, light/dark regions), not semantic understanding of "face" — clothing folds can occasionally mimic these patterns.
 
 ### Failure Cases
+
+A quick overview of every miss, with the likely cause:
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="assets/outputs/tb5.jpg" width="220"><br>
+      <sub><em>Low resolution — faces too pixelated to match Haar features</em></sub>
+    </td>
+    <td align="center">
+      <img src="assets/outputs/tb6.jpg" width="220"><br>
+      <sub><em>Appearance variation — expression/orientation differs from training patterns</em></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="assets/outputs/tb7.jpg" width="220"><br>
+      <sub><em>Face orientation — profile view from the Revolver album cover</em></sub>
+    </td>
+    <td align="center">
+      <img src="assets/outputs/tb4.jpg" width="220"><br>
+      <sub><em>Unclear cause — frontal face missed despite similar cases succeeding</em></sub>
+    </td>
+  </tr>
+</table>
 
 | Case | Likely Cause |
 |---|---|
@@ -180,11 +247,6 @@ This happens because Haar Cascade matches visual patterns (contrast edges, symme
 | Missed a clear, high-quality face | Slight orientation/expression differences from training patterns |
 | Missed a profile face (Revolver album cover) | Haar Cascade is tuned for frontal faces; side angles reduce reliability |
 | Missed a frontal face despite similar cases being detected | Likely a combination of factors (exact position, contrast, hair/shadow interaction) rather than one clear cause |
-
-<div align="center">
-<img src="assets/outputs/tb5.jpg">
-</div>
-<p align="center">*Missed detections due to low resolution.*</p>
 
 ---
 
