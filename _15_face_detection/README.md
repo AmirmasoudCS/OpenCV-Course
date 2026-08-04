@@ -201,7 +201,7 @@ All beetle images were correctly identified as containing no faces, confirming t
 ### False Positives
 
 In two images, the classifier mistook a collar for a face:
-<table>
+<table align="center">
     <tr>
         <td align="center">
             <img src="assets/outputs/pm2.jpg" width="350"><br>
