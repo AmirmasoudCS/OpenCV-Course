@@ -5,30 +5,36 @@ import cv2 as cv
 import numpy as np
 
 def main():
-    overwrite: bool = int(input("Overwrite the train results?\n(0) No    (1) Yes\n"))
 
-    if overwrite:
-        features, labels = create_train()
-        save(features, labels)
+    choice = int(input("What do you want to do?\n(1) Train\n(2) Validate\n"))
 
-    else:
-        features, labels = load_train()
+    if choice == 1:
 
-    features = np.array(features, dtype='object')
-    labels = np.array(labels)
+        overwrite: bool = int(input("Overwrite the train results?\n(0) No    (1) Yes\n"))
 
+        if overwrite:
+            features, labels = create_train()
+            save(features, labels)
 
-    face_recognizer = cv.face.LBPHFaceRecognizer_create()
+        else:
+            features, labels = load_train()
 
-    # Train the Recognizer on the features list and the labels list
-
-    face_recognizer.train(features, labels)
-
-    np.save("config/features.npy", features)
-    np.save("config/labels.npy", labels)
+        features = np.array(features, dtype='object')
+        labels = np.array(labels)
 
 
-        
+        face_recognizer = cv.face.LBPHFaceRecognizer_create()
+
+        # Train the Recognizer on the features list and the labels list
+
+        face_recognizer.train(features, labels)
+
+        face_recognizer.save("config/face_trained.yaml")
+        np.save("config/features.npy", features)
+        np.save("config/labels.npy", labels)
+
+    elif choice == 2:
+        pass
 
 if __name__ == "__main__":
     main()
