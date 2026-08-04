@@ -4,7 +4,6 @@ import cv2 as cv
 from _15_face_detection.utils.xml_loader import load_xml
 from _15_face_detection.utils.greyscale import to_grey
 from _15_face_detection.config.paths import SOURCE
-from _15_face_detection.config.constants import SCALE_FACTOR, MINIMUM_NEIGHBOURS
 
 from _16_face_recognition.config.paths import (
     CONFIG,
@@ -37,8 +36,8 @@ def main():
 
             faces_rect = classifier.detectMultiScale(
                 grey,
-                scaleFactor=SCALE_FACTOR,
-                minNeighbors=MINIMUM_NEIGHBOURS,
+                scaleFactor=1.1,
+                minNeighbors=4,
             )
 
             for (x, y, w, h) in faces_rect:
