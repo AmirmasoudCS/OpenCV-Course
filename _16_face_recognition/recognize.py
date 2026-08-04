@@ -59,18 +59,6 @@ def main():
                 text = f"{predicted_person} ({confidence:.1f})"
                 position = (x, max(30, y - 10))
 
-                # Outline
-                cv.putText(
-                    img,
-                    text,
-                    position,
-                    cv.FONT_HERSHEY_COMPLEX,
-                    font_scale,
-                    (0, 0, 0),
-                    thickness + 2,
-                    cv.LINE_AA,
-                )
-
                 # Foreground
                 cv.putText(
                     img,
