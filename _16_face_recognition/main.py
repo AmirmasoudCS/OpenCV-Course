@@ -2,8 +2,12 @@ from _16_face_recognition.train import create_train
 from _16_face_recognition.saver import save
 
 def main():
-    features, labels = create_train()
-    save(features, labels)
+    overwrite: bool = int(input("Overwrite the train results?\n(0) No    (1) Yes"))
+
+    if overwrite:
+        features, labels = create_train()
+        save(features, labels)
+        
 
 if __name__ == "__main__":
     main()
